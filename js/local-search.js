@@ -281,7 +281,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   };
 
-  highlightSearchWords();
   if (CONFIG.localsearch.preload) {
     fetchData();
   }
