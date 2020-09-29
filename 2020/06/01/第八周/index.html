@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.0.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"zkliang.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"appID":"GBI3X4HQ5T","apiKey":"4356c718dc242bca59a4e2fce2e71066","indexName":"Hexo","hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="1、简述OSIosi七层模型和TCP&#x2F;IP五层模型 (1) OSI七层模型 第七层 应用层 应用层（Application Layer） 提供为应用软件而设的接口，以设置与另一应用软件之间的通信。例如：HTTP、HTTPS、FTP、Telnet、SSH、SMTP、POP3等。  第六层 表达层 表达层（Presentation Layer） 把数据转换为能与接收者的系统格式兼容并适合传输的格式。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第八周">
+<meta property="og:url" content="https://zkliang.com/2020/06/01/%E7%AC%AC%E5%85%AB%E5%91%A8/index.html">
+<meta property="og:site_name" content="鲜橙多的博客">
+<meta property="og:description" content="1、简述OSIosi七层模型和TCP&#x2F;IP五层模型 (1) OSI七层模型 第七层 应用层 应用层（Application Layer） 提供为应用软件而设的接口，以设置与另一应用软件之间的通信。例如：HTTP、HTTPS、FTP、Telnet、SSH、SMTP、POP3等。  第六层 表达层 表达层（Presentation Layer） 把数据转换为能与接收者的系统格式兼容并适合传输的格式。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-06-01T00:00:00.000Z">
+<meta property="article:modified_time" content="2020-08-31T00:00:00.000Z">
+<meta property="article:author" content="zkliang">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://zkliang.com/2020/06/01/%E7%AC%AC%E5%85%AB%E5%91%A8/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>第八周 | 鲜橙多的博客</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-178722830-1"></script>
+    <script data-pjax>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-178722830-1');
+      }
+    </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">鲜橙多的博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container"></div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="algolia-results">
+  <div id="algolia-stats"></div>
+  <div id="algolia-hits"></div>
+  <div id="algolia-pagination" class="algolia-pagination"></div>
+</div>
+
+      
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://zkliang.com/2020/06/01/%E7%AC%AC%E5%85%AB%E5%91%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="zkliang">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="鲜橙多的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          第八周
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-06-01 00:00:00" itemprop="dateCreated datePublished" datetime="2020-06-01T00:00:00+00:00">2020-06-01</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-08-31 00:00:00" itemprop="dateModified" datetime="2020-08-31T00:00:00+00:00">2020-08-31</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%A9%AC%E5%93%A5Linux/" itemprop="url" rel="index"><span itemprop="name">马哥Linux</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="1、简述OSIosi七层模型和TCP-IP五层模型"><a href="#1、简述OSIosi七层模型和TCP-IP五层模型" class="headerlink" title="1、简述OSIosi七层模型和TCP/IP五层模型"></a>1、简述OSIosi七层模型和TCP/IP五层模型</h2><h3 id="1-OSI七层模型"><a href="#1-OSI七层模型" class="headerlink" title="(1) OSI七层模型"></a>(1) OSI七层模型</h3><h4 id="第七层-应用层"><a href="#第七层-应用层" class="headerlink" title="第七层 应用层"></a>第七层 应用层</h4><p><strong>应用层（Application Layer）</strong> 提供为应用软件而设的接口，以设置与另一应用软件之间的通信。例如：HTTP、HTTPS、FTP、Telnet、SSH、SMTP、POP3等。</p>
+<h4 id="第六层-表达层"><a href="#第六层-表达层" class="headerlink" title="第六层 表达层"></a>第六层 表达层</h4><p><strong>表达层（Presentation Layer）</strong> 把数据转换为能与接收者的系统格式兼容并适合传输的格式。</p>
+<h4 id="第五层-会话层"><a href="#第五层-会话层" class="headerlink" title="第五层 会话层"></a>第五层 会话层</h4><p><strong>会话层（Session Layer）</strong> 负责在数据传输中设置和维护计算机网络中两台计算机之间的通信连接。</p>
+<h4 id="第四层-传输层"><a href="#第四层-传输层" class="headerlink" title="第四层 传输层"></a>第四层 传输层</h4><p><strong>传输层（Transport Layer）</strong> 把传输表头（TH）加至数据以形成数据包。传输表头包含了所使用的协议等发送信息。例如:传输控制协议（TCP）等。</p>
+<h4 id="第三层-网络层"><a href="#第三层-网络层" class="headerlink" title="第三层 网络层"></a>第三层 网络层</h4><p><strong>网络层（Network Layer）</strong> 决定数据的路径选择和转寄，将网络表头（NH）加至数据包，以形成报文。网络表头包含了网络资料。例如:互联网协议（IP）等。</p>
+<h4 id="第二层-数据链路层"><a href="#第二层-数据链路层" class="headerlink" title="第二层 数据链路层"></a>第二层 数据链路层</h4><p><strong>数据链路层（Data Link Layer）</strong> 负责网络寻址、错误侦测和改错。当表头和表尾被加至数据包时，会形成信息框（Data Frame）。数据链表头（DLH）是包含了物理地址和错误侦测及改错的方法。数据链表尾（DLT）是一串指示数据包末端的字符串。例如以太网、无线局域网（Wi-Fi）和通用分组无线服务（GPRS）等。</p>
+<p>分为两个子层：逻辑链路控制（logical link control，LLC）子层和介质访问控制（Media access control，MAC）子层。</p>
+<h4 id="第一层-物理层"><a href="#第一层-物理层" class="headerlink" title="第一层 物理层"></a>第一层 物理层</h4><p><strong>物理层（Physical Layer）</strong> 在局部局域网上传送数据帧（Data Frame），它负责管理电脑通信设备和网络媒体之间的互通。包括了针脚、电压、线缆规范、集线器、中继器、网卡、主机接口卡等。</p>
+<h3 id="2-TCP-IP五层（四层）模型"><a href="#2-TCP-IP五层（四层）模型" class="headerlink" title="(2) TCP/IP五层（四层）模型"></a>(2) TCP/IP五层（四层）模型</h3><h4 id="第五层：应用层"><a href="#第五层：应用层" class="headerlink" title="第五层：应用层"></a>第五层：应用层</h4><p><strong>功能：</strong> 负责应用程序间沟通，如简单电子邮件传输（SMTP）、文件传输协议（FTP）、网络远程访问协议（Telnet）等。<br><strong>代表协议：</strong> HTTP、DNS、NAT、NATP。</p>
+<h4 id="第四层：传输层"><a href="#第四层：传输层" class="headerlink" title="第四层：传输层"></a>第四层：传输层</h4><p><strong>功能：</strong> 负责两台主机之间的数据传输。 如传输控制协议 (TCP)， 能够确保数据可靠的从源主机发送到目标主机。<br><strong>代表协议：</strong> TCP、UDP。</p>
+<h4 id="第三层：网络层"><a href="#第三层：网络层" class="headerlink" title="第三层：网络层"></a>第三层：网络层</h4><p><strong>功能：</strong> 负责地址管理和路由选择。 例如在IP协议中，通过IP地址来标识一台主机， 并通过路由表的方式规划出两台主机之间的数据传输的线路(路由)。路由器(Router)工作在网路层。<br>代表硬件：路由器。<br><strong>代表协议：</strong> IP。</p>
+<h4 id="第二层：数据链路层"><a href="#第二层：数据链路层" class="headerlink" title="第二层：数据链路层"></a>第二层：数据链路层</h4><p><strong>功能：</strong> 负责设备之间的数据帧的传送和识别。 例如网卡设备的驱动、帧同步(就是说从网线上检测到什么信号算作新帧的开始)、冲突检测(如果检测到冲突就自动重发)、数据差错校验等工作. 有以太网、令牌环网, 无线LAN等标准。交换机(Switch)工作在数据链路层。<br><strong>代表硬件：</strong> 交换机等。<br><strong>代表协议：</strong> 以太网、令牌环网、无线LAN、ARP、MTU。  </p>
+<h4 id="第一层：物理层"><a href="#第一层：物理层" class="headerlink" title="第一层：物理层"></a>第一层：物理层</h4><p><strong>功能：</strong> 负责光/电信号的传递方式。比如现在以太网通用的网线(双绞线)、早期以太网采用的的同轴电缆(现在主要用于有线电视)、光纤，现在的wifi无线网使用电磁波等都属于物理层的概念。物理层的能力决定了最大传输速率、传输距离、抗干扰性等。 集线器(Hub)工作在物理层。<br><strong>代表硬件：</strong> 双绞线（网线）、WiFi电磁波、集线器等。  </p>
+<h2 id="2、总结描述TCP三次握手四次挥手"><a href="#2、总结描述TCP三次握手四次挥手" class="headerlink" title="2、总结描述TCP三次握手四次挥手"></a>2、总结描述TCP三次握手四次挥手</h2><h3 id="三次握手"><a href="#三次握手" class="headerlink" title="三次握手"></a>三次握手</h3><p>客户端：CLOSE -&gt; SYN-SEND -&gt; ESTAB-LISHED<br>服务器端：LISTEN -&gt; SYN-RCVD -&gt; ESTAB-LISHED<br>1.客户端应用打开端口向服务器端发送请求后自动进入SYN-SEND状态<br>2.服务器端立即响应客户端请求后进入后自动SYN-RCVD状态并向客户发送响应<br>3.客户端收到响应后立即响应服务器端同时自动进入ESTAB-LISHED，服务器端收到客户端响应后自动进入ESTAB-LISHED，至此已建立连接</p>
+<h3 id="四次挥手"><a href="#四次挥手" class="headerlink" title="四次挥手"></a>四次挥手</h3><p>客户端：ESTAB-LISHED -&gt; FIN-WAIT1 -&gt; FIN-WAIT2 -&gt; TIME-WAIT -&gt;CLOSE<br>服务器端：ESTAB-LISHED -&gt; CLOSE-WAIT -&gt; LAST-ACK -&gt; CLOSE<br>1.客户端向服务器发送分手请求自动进入FIN-WAIT1状态<br>2.服务器收到请求立即响应自动进入CLOSE-WAIT状态并向客户端发送响应<br>3.客户端收到响应后进入FIN-WAIT2状态服务器端可以继续向客户端发送剩余数据发送完毕后向客户端发送分手请求并进入LAST-ACK状态<br>4.客户端收到服务器分手请求立即响应后进入TIME-WAIT状态(防止丢包)然后进入CLOSE状态服务器端收到客户端响应后进入CLOSE状态，至此已断开链接</p>
+<h2 id="3、描述TCP和UDP区别"><a href="#3、描述TCP和UDP区别" class="headerlink" title="3、描述TCP和UDP区别"></a>3、描述TCP和UDP区别</h2><p>1、TCP面向连接（如打电话要先拨号建立连接）;UDP是无连接的，即发送数据之前不需要建立连接<br>2、TCP提供可靠的服务。也就是说，通过TCP连接传送的数据，无差错，不丢失，不重复，且按序到达;UDP尽最大努力交付，即不保 证可靠交付<br>3、TCP面向字节流，实际上是TCP把数据看成一连串无结构的字节流;UDP是面向报文的<br>UDP没有拥塞控制，因此网络出现拥塞不会使源主机的发送速率降低（对实时应用很有用，如IP电话，实时视频会议等）<br>4、每一条TCP连接只能是点到点的;UDP支持一对一，一对多，多对一和多对多的交互通信<br>5、TCP首部开销20字节;UDP的首部开销小，只有8个字节<br>6、TCP的逻辑通信信道是全双工的可靠信道，UDP则是不可靠信道</p>
+<h2 id="4、总结IP分类以及每个分类可以分配的IP数量"><a href="#4、总结IP分类以及每个分类可以分配的IP数量" class="headerlink" title="4、总结IP分类以及每个分类可以分配的IP数量"></a>4、总结IP分类以及每个分类可以分配的IP数量</h2><h3 id="A类："><a href="#A类：" class="headerlink" title="A类："></a>A类：</h3><p>前8位是网络ID，后24位是主机ID且最高位为0<br>0xxxxxxx.a.b.c<br>0-127.<br>网络数：2^7 = 128 去掉0和127 即1-126<br>每个网络中的主机数：2^24-2=16,777,214<br>默认子网掩码：255.0.0.0<br>私网地址：10.0.0.0</p>
+<h3 id="B类："><a href="#B类：" class="headerlink" title="B类："></a>B类：</h3><p>10 00 0000 - 10 11 1111：128-191<br>网络数：2^14 = 16384<br>每个网络中的主机数：2^16-2 = 65534<br>默认子网掩码：255.255.0.0<br>私网地址：172.16.0.0-172.31.0.0</p>
+<h3 id="C类："><a href="#C类：" class="headerlink" title="C类："></a>C类：</h3><p>110 0 0000 - 110 1 1111: 192-223<br>网络数：2^21 = 2097152<br>每个网络中的主机数：2^8-2 = 254<br>默认子网掩码：255.255.255.0<br>私网地址：192.168.0.0-192.168.255.0</p>
+<h3 id="D类："><a href="#D类：" class="headerlink" title="D类："></a>D类：</h3><p>组播<br>1110 0000 - 1110 1111: 224-239<br>E类：保留未使用<br>240-255</p>
+<h2 id="5、总结IP配置方法"><a href="#5、总结IP配置方法" class="headerlink" title="5、总结IP配置方法"></a>5、总结IP配置方法</h2><h3 id="1-ifconfig命令："><a href="#1-ifconfig命令：" class="headerlink" title="(1) ifconfig命令："></a>(1) ifconfig命令：</h3><pre><code>ifconfig [INTERFACE]
+    ~]# ifconfig -a：显示所有接口，包括inactive状态的接口；
+
+ifconfig interface [aftype] options | address …
+    ~]# ifconfig IFACE IP/MASK [up]
+    ~]# ifconfig IFACE IP netmask NETMASK
+
+options：
+    [-]promisc：开启/关闭  混杂模式；
+
+注意：立即送往内核中的TCP/IP协议栈，并生效； </code></pre>
+<h3 id="2-ip-address命令"><a href="#2-ip-address命令" class="headerlink" title="(2) ip address命令"></a>(2) ip address命令</h3><pre><code>ip address - protocol address management
+
+    ip address add - add new protocol address
+        ip addr add IFADDR dev IFACE
+            [lable NAME]：为额外添加的地址指明接口别名；
+            [broadcast ADDRESS]：广播地址；会根据IP和NETMASK自动计算得到；
+            [scope SCOPE_VALUE]：
+                global：全局可用；
+                link：接口可用；
+                host：仅本机可用；
+
+    ip address delete - delete protocol address
+        ip addr delete IFADDR dev IFACE
+
+    ip address show - look at protocol addresses
+        ip addr list [IFACE]：显示接口的地址；
+
+    ip address flush - flush protocol addresses
+        ip addr flush dev IFACE</code></pre>
+<h3 id="3-nmcli命令"><a href="#3-nmcli命令" class="headerlink" title="(3) nmcli命令"></a>(3) nmcli命令</h3><pre><code>~]# nmcli conn modify IFACE [+|-]setting.property value
+        ipv4.address
+        ipv4.gateway
+        ipv4.dns1
+        ipv4.method
+             manual</code></pre>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/05/25/%E7%AC%AC%E4%B8%83%E5%91%A8/" rel="prev" title="第七周">
+      <i class="fa fa-chevron-left"></i> 第七周
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/08/22/Vim%E9%94%AE%E4%BD%8D%E5%9B%BE/" rel="next" title="Vim键位图">
+      Vim键位图 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1%E3%80%81%E7%AE%80%E8%BF%B0OSIosi%E4%B8%83%E5%B1%82%E6%A8%A1%E5%9E%8B%E5%92%8CTCP-IP%E4%BA%94%E5%B1%82%E6%A8%A1%E5%9E%8B"><span class="nav-text">1、简述OSIosi七层模型和TCP&#x2F;IP五层模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-OSI%E4%B8%83%E5%B1%82%E6%A8%A1%E5%9E%8B"><span class="nav-text">(1) OSI七层模型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC%E4%B8%83%E5%B1%82-%E5%BA%94%E7%94%A8%E5%B1%82"><span class="nav-text">第七层 应用层</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC%E5%85%AD%E5%B1%82-%E8%A1%A8%E8%BE%BE%E5%B1%82"><span class="nav-text">第六层 表达层</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC%E4%BA%94%E5%B1%82-%E4%BC%9A%E8%AF%9D%E5%B1%82"><span class="nav-text">第五层 会话层</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC%E5%9B%9B%E5%B1%82-%E4%BC%A0%E8%BE%93%E5%B1%82"><span class="nav-text">第四层 传输层</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC%E4%B8%89%E5%B1%82-%E7%BD%91%E7%BB%9C%E5%B1%82"><span class="nav-text">第三层 网络层</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E5%B1%82-%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82"><span class="nav-text">第二层 数据链路层</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E5%B1%82-%E7%89%A9%E7%90%86%E5%B1%82"><span class="nav-text">第一层 物理层</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-TCP-IP%E4%BA%94%E5%B1%82%EF%BC%88%E5%9B%9B%E5%B1%82%EF%BC%89%E6%A8%A1%E5%9E%8B"><span class="nav-text">(2) TCP&#x2F;IP五层（四层）模型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC%E4%BA%94%E5%B1%82%EF%BC%9A%E5%BA%94%E7%94%A8%E5%B1%82"><span class="nav-text">第五层：应用层</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC%E5%9B%9B%E5%B1%82%EF%BC%9A%E4%BC%A0%E8%BE%93%E5%B1%82"><span class="nav-text">第四层：传输层</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC%E4%B8%89%E5%B1%82%EF%BC%9A%E7%BD%91%E7%BB%9C%E5%B1%82"><span class="nav-text">第三层：网络层</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E5%B1%82%EF%BC%9A%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82"><span class="nav-text">第二层：数据链路层</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E5%B1%82%EF%BC%9A%E7%89%A9%E7%90%86%E5%B1%82"><span class="nav-text">第一层：物理层</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2%E3%80%81%E6%80%BB%E7%BB%93%E6%8F%8F%E8%BF%B0TCP%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B"><span class="nav-text">2、总结描述TCP三次握手四次挥手</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B"><span class="nav-text">三次握手</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B"><span class="nav-text">四次挥手</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3%E3%80%81%E6%8F%8F%E8%BF%B0TCP%E5%92%8CUDP%E5%8C%BA%E5%88%AB"><span class="nav-text">3、描述TCP和UDP区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4%E3%80%81%E6%80%BB%E7%BB%93IP%E5%88%86%E7%B1%BB%E4%BB%A5%E5%8F%8A%E6%AF%8F%E4%B8%AA%E5%88%86%E7%B1%BB%E5%8F%AF%E4%BB%A5%E5%88%86%E9%85%8D%E7%9A%84IP%E6%95%B0%E9%87%8F"><span class="nav-text">4、总结IP分类以及每个分类可以分配的IP数量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#A%E7%B1%BB%EF%BC%9A"><span class="nav-text">A类：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#B%E7%B1%BB%EF%BC%9A"><span class="nav-text">B类：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C%E7%B1%BB%EF%BC%9A"><span class="nav-text">C类：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#D%E7%B1%BB%EF%BC%9A"><span class="nav-text">D类：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5%E3%80%81%E6%80%BB%E7%BB%93IP%E9%85%8D%E7%BD%AE%E6%96%B9%E6%B3%95"><span class="nav-text">5、总结IP配置方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-ifconfig%E5%91%BD%E4%BB%A4%EF%BC%9A"><span class="nav-text">(1) ifconfig命令：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-ip-address%E5%91%BD%E4%BB%A4"><span class="nav-text">(2) ip address命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-nmcli%E5%91%BD%E4%BB%A4"><span class="nav-text">(3) nmcli命令</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">zkliang</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">10</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zkliang</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/pjax/pjax.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '.languages',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[data-pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.dataset.pjax !== undefined) {
+      script.dataset.pjax = '';
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="//cdn.jsdelivr.net/npm/algoliasearch@4/dist/algoliasearch-lite.umd.js"></script>
+<script src="//cdn.jsdelivr.net/npm/instantsearch.js@4/dist/instantsearch.production.min.js"></script>
+<script src="/js/algolia-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+  
+
+  
+
+    </div>
+</body>
+</html>

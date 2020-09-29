@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.0.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"zkliang.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"appID":"GBI3X4HQ5T","apiKey":"4356c718dc242bca59a4e2fce2e71066","indexName":"Hexo","hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="1、统计出&#x2F;etc&#x2F;passwd文件中其默认shell为非&#x2F;sbin&#x2F;nologin的用户个数，并将用户都显示出来  * 统计shell为非&#x2F;sbin&#x2F;nologin用户的个数：         ~]# cat &#x2F;etc&#x2F;passwd | grep -v &#39;&#x2F;sbin&#x2F;nologin&#39;|wc -l          * 显示用户：         ~]# cat &#x2F;etc&#x2F;passwd | gre">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第四周">
+<meta property="og:url" content="https://zkliang.com/2020/05/04/%E7%AC%AC%E5%9B%9B%E5%91%A8/index.html">
+<meta property="og:site_name" content="鲜橙多的博客">
+<meta property="og:description" content="1、统计出&#x2F;etc&#x2F;passwd文件中其默认shell为非&#x2F;sbin&#x2F;nologin的用户个数，并将用户都显示出来  * 统计shell为非&#x2F;sbin&#x2F;nologin用户的个数：         ~]# cat &#x2F;etc&#x2F;passwd | grep -v &#39;&#x2F;sbin&#x2F;nologin&#39;|wc -l          * 显示用户：         ~]# cat &#x2F;etc&#x2F;passwd | gre">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-05-04T00:00:00.000Z">
+<meta property="article:modified_time" content="2020-08-22T00:00:00.000Z">
+<meta property="article:author" content="zkliang">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://zkliang.com/2020/05/04/%E7%AC%AC%E5%9B%9B%E5%91%A8/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>第四周 | 鲜橙多的博客</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-178722830-1"></script>
+    <script data-pjax>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-178722830-1');
+      }
+    </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">鲜橙多的博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container"></div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="algolia-results">
+  <div id="algolia-stats"></div>
+  <div id="algolia-hits"></div>
+  <div id="algolia-pagination" class="algolia-pagination"></div>
+</div>
+
+      
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://zkliang.com/2020/05/04/%E7%AC%AC%E5%9B%9B%E5%91%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="zkliang">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="鲜橙多的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          第四周
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-05-04 00:00:00" itemprop="dateCreated datePublished" datetime="2020-05-04T00:00:00+00:00">2020-05-04</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-08-22 00:00:00" itemprop="dateModified" datetime="2020-08-22T00:00:00+00:00">2020-08-22</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%A9%AC%E5%93%A5Linux/" itemprop="url" rel="index"><span itemprop="name">马哥Linux</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="1、统计出-etc-passwd文件中其默认shell为非-sbin-nologin的用户个数，并将用户都显示出来"><a href="#1、统计出-etc-passwd文件中其默认shell为非-sbin-nologin的用户个数，并将用户都显示出来" class="headerlink" title="1、统计出/etc/passwd文件中其默认shell为非/sbin/nologin的用户个数，并将用户都显示出来"></a>1、统计出/etc/passwd文件中其默认shell为非/sbin/nologin的用户个数，并将用户都显示出来</h2><ul>
+<li><p>统计shell为非/sbin/nologin用户的个数：</p>
+<p>  <code>~]# cat /etc/passwd | grep -v &#39;/sbin/nologin&#39;|wc -l</code></p>
+</li>
+<li><p>显示用户：</p>
+<p>  <code>~]# cat /etc/passwd | grep -v &#39;/sbin/nologin&#39;|cut -d: -f1</code></p>
+</li>
+</ul>
+<h2 id="2、查出用户UID最大值的用户名、UID及shell类型"><a href="#2、查出用户UID最大值的用户名、UID及shell类型" class="headerlink" title="2、查出用户UID最大值的用户名、UID及shell类型"></a>2、查出用户UID最大值的用户名、UID及shell类型</h2><pre><code>&lt;!--hexoPostRenderEscape:&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;~]#  sort -n -k3 -t&amp;#39;:&amp;#39; &amp;#x2F;etc&amp;#x2F;passwd |tail -1|cut -d: -f1,3,7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;:hexoPostRenderEscape--&gt;</code></pre>
+<h2 id="3、统计当前连接本机的每个远程主机IP的连接数，并按从大到小排序"><a href="#3、统计当前连接本机的每个远程主机IP的连接数，并按从大到小排序" class="headerlink" title="3、统计当前连接本机的每个远程主机IP的连接数，并按从大到小排序"></a>3、统计当前连接本机的每个远程主机IP的连接数，并按从大到小排序</h2><pre><code>&lt;!--hexoPostRenderEscape:&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;~]# netstat -t|grep [0-9]|tr -s &amp;quot; &amp;quot; :|cut -d: -f4|uniq -c|sort -nr&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;:hexoPostRenderEscape--&gt;</code></pre>
+<h2 id="4、编写脚本-createuser-sh，实现如下功能-使用一个用户名做为参数，如果-指定参数的用户存在，就显示其存在，否则添加之-显示添加的用户的id号等-信息"><a href="#4、编写脚本-createuser-sh，实现如下功能-使用一个用户名做为参数，如果-指定参数的用户存在，就显示其存在，否则添加之-显示添加的用户的id号等-信息" class="headerlink" title="4、编写脚本 createuser.sh，实现如下功能:使用一个用户名做为参数，如果 指定参数的用户存在，就显示其存在，否则添加之;显示添加的用户的id号等 信息"></a>4、编写脚本 createuser.sh，实现如下功能:使用一个用户名做为参数，如果 指定参数的用户存在，就显示其存在，否则添加之;显示添加的用户的id号等 信息</h2><pre><code>&lt;!--hexoPostRenderEscape:&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;useradd $1 &amp;amp;&amp;amp; id $1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;:hexoPostRenderEscape--&gt;</code></pre>
+<h2 id="5、编写生成脚本基本格式的脚本，包括作者，联系方式，版本，时间，描述等"><a href="#5、编写生成脚本基本格式的脚本，包括作者，联系方式，版本，时间，描述等" class="headerlink" title="5、编写生成脚本基本格式的脚本，包括作者，联系方式，版本，时间，描述等"></a>5、编写生成脚本基本格式的脚本，包括作者，联系方式，版本，时间，描述等</h2><pre><code>&lt;!--hexoPostRenderEscape:&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;autocmd BufNewFile *.sh exec &amp;quot;:call SetTitle()&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; func SetTitle()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; if expand(&amp;quot;%:e&amp;quot;) &amp;#x3D;&amp;#x3D;&amp;#39;sh&amp;#39;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; call setline(1,&amp;quot;#!&amp;#x2F;bin&amp;#x2F;bash&amp;quot;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; call setline(2,&amp;quot;#&amp;quot;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; call setline(3,&amp;quot;#********************************************************&amp;quot;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; call setline(4,&amp;quot;#Author: zkliang&amp;quot;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; call setline(5,&amp;quot;#QQ: 88888&amp;quot;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; call setline(6,&amp;quot;#Date: &amp;quot;.strftime(&amp;quot;%Y-%m-%d&amp;quot;))&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; call setline(7,&amp;quot;#FileName: &amp;quot;.expand(&amp;quot;%&amp;quot;))&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; call setline(8,&amp;quot;#URL: https:&amp;#x2F;&amp;#x2F;zkliang.com&amp;quot;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; call setline(9,&amp;quot;#Description: The test script&amp;quot;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; call setline(10,&amp;quot;#Copyright (C): &amp;quot;.strftime(&amp;quot;%Y&amp;quot;).&amp;quot; All rights reserved&amp;quot;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; call setline(11,&amp;quot;#********************************************************&amp;quot;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; call setline(12,&amp;quot;&amp;quot;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; endif&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; endfunc&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; autocmd BufNewFile * normal G&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;:hexoPostRenderEscape--&gt;</code></pre>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/04/27/%E7%AC%AC%E4%B8%89%E5%91%A8/" rel="prev" title="第三周">
+      <i class="fa fa-chevron-left"></i> 第三周
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/05/11/%E7%AC%AC%E4%BA%94%E5%91%A8/" rel="next" title="第五周">
+      第五周 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1%E3%80%81%E7%BB%9F%E8%AE%A1%E5%87%BA-etc-passwd%E6%96%87%E4%BB%B6%E4%B8%AD%E5%85%B6%E9%BB%98%E8%AE%A4shell%E4%B8%BA%E9%9D%9E-sbin-nologin%E7%9A%84%E7%94%A8%E6%88%B7%E4%B8%AA%E6%95%B0%EF%BC%8C%E5%B9%B6%E5%B0%86%E7%94%A8%E6%88%B7%E9%83%BD%E6%98%BE%E7%A4%BA%E5%87%BA%E6%9D%A5"><span class="nav-text">1、统计出&#x2F;etc&#x2F;passwd文件中其默认shell为非&#x2F;sbin&#x2F;nologin的用户个数，并将用户都显示出来</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2%E3%80%81%E6%9F%A5%E5%87%BA%E7%94%A8%E6%88%B7UID%E6%9C%80%E5%A4%A7%E5%80%BC%E7%9A%84%E7%94%A8%E6%88%B7%E5%90%8D%E3%80%81UID%E5%8F%8Ashell%E7%B1%BB%E5%9E%8B"><span class="nav-text">2、查出用户UID最大值的用户名、UID及shell类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3%E3%80%81%E7%BB%9F%E8%AE%A1%E5%BD%93%E5%89%8D%E8%BF%9E%E6%8E%A5%E6%9C%AC%E6%9C%BA%E7%9A%84%E6%AF%8F%E4%B8%AA%E8%BF%9C%E7%A8%8B%E4%B8%BB%E6%9C%BAIP%E7%9A%84%E8%BF%9E%E6%8E%A5%E6%95%B0%EF%BC%8C%E5%B9%B6%E6%8C%89%E4%BB%8E%E5%A4%A7%E5%88%B0%E5%B0%8F%E6%8E%92%E5%BA%8F"><span class="nav-text">3、统计当前连接本机的每个远程主机IP的连接数，并按从大到小排序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4%E3%80%81%E7%BC%96%E5%86%99%E8%84%9A%E6%9C%AC-createuser-sh%EF%BC%8C%E5%AE%9E%E7%8E%B0%E5%A6%82%E4%B8%8B%E5%8A%9F%E8%83%BD-%E4%BD%BF%E7%94%A8%E4%B8%80%E4%B8%AA%E7%94%A8%E6%88%B7%E5%90%8D%E5%81%9A%E4%B8%BA%E5%8F%82%E6%95%B0%EF%BC%8C%E5%A6%82%E6%9E%9C-%E6%8C%87%E5%AE%9A%E5%8F%82%E6%95%B0%E7%9A%84%E7%94%A8%E6%88%B7%E5%AD%98%E5%9C%A8%EF%BC%8C%E5%B0%B1%E6%98%BE%E7%A4%BA%E5%85%B6%E5%AD%98%E5%9C%A8%EF%BC%8C%E5%90%A6%E5%88%99%E6%B7%BB%E5%8A%A0%E4%B9%8B-%E6%98%BE%E7%A4%BA%E6%B7%BB%E5%8A%A0%E7%9A%84%E7%94%A8%E6%88%B7%E7%9A%84id%E5%8F%B7%E7%AD%89-%E4%BF%A1%E6%81%AF"><span class="nav-text">4、编写脚本 createuser.sh，实现如下功能:使用一个用户名做为参数，如果 指定参数的用户存在，就显示其存在，否则添加之;显示添加的用户的id号等 信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5%E3%80%81%E7%BC%96%E5%86%99%E7%94%9F%E6%88%90%E8%84%9A%E6%9C%AC%E5%9F%BA%E6%9C%AC%E6%A0%BC%E5%BC%8F%E7%9A%84%E8%84%9A%E6%9C%AC%EF%BC%8C%E5%8C%85%E6%8B%AC%E4%BD%9C%E8%80%85%EF%BC%8C%E8%81%94%E7%B3%BB%E6%96%B9%E5%BC%8F%EF%BC%8C%E7%89%88%E6%9C%AC%EF%BC%8C%E6%97%B6%E9%97%B4%EF%BC%8C%E6%8F%8F%E8%BF%B0%E7%AD%89"><span class="nav-text">5、编写生成脚本基本格式的脚本，包括作者，联系方式，版本，时间，描述等</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">zkliang</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">10</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zkliang</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/pjax/pjax.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '.languages',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[data-pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.dataset.pjax !== undefined) {
+      script.dataset.pjax = '';
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="//cdn.jsdelivr.net/npm/algoliasearch@4/dist/algoliasearch-lite.umd.js"></script>
+<script src="//cdn.jsdelivr.net/npm/instantsearch.js@4/dist/instantsearch.production.min.js"></script>
+<script src="/js/algolia-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+  
+
+  
+
+    </div>
+</body>
+</html>
