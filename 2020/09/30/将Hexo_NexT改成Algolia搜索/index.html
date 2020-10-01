@@ -31,21 +31,21 @@
 <meta property="og:site_name" content="鲜橙多的博客">
 <meta property="og:description" content="前言 最近发现文章越来越肥大，而导致 search.json 越来越肥，所以打算换成另一种搜寻方法，也就是使用 Algolia 服务。  环境参考 版本与环境 操作系统： Windows10 X64 Nodejs:：V11.7.0 IDE：VS Code  Hexo 版本  * hexo: 3.8.0          * hexo-cli: 2.0.0          Algolia 在前面有">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://firebasestorage.googleapis.com/v0/b/welcomewebworld-4097b.appspot.com/o/blogImg%2FHexo%2F2019-12-25_17-10-13.png?alt=media&token=628084b0-5a09-4f95-852d-4ff75f91464d">
-<meta property="og:image" content="https://firebasestorage.googleapis.com/v0/b/welcomewebworld-4097b.appspot.com/o/blogImg%2FHexo%2F1577265178107.jpg?alt=media&token=8073d0c0-8d4e-4c1f-8add-6e7dc739fa0f">
-<meta property="og:image" content="https://firebasestorage.googleapis.com/v0/b/welcomewebworld-4097b.appspot.com/o/blogImg%2FHexo%2F2019-12-25_16-42-25.png?alt=media&token=bb35c269-4b6e-439c-b971-3809bd37bc63">
-<meta property="og:image" content="https://firebasestorage.googleapis.com/v0/b/welcomewebworld-4097b.appspot.com/o/blogImg%2FHexo%2F2019-12-25_17-23-35.png?alt=media&token=34c198fc-9d51-4321-bb8d-b9841f89a117">
-<meta property="og:image" content="https://firebasestorage.googleapis.com/v0/b/welcomewebworld-4097b.appspot.com/o/blogImg%2FHexo%2F2019-12-25_17-24-19.png?alt=media&token=df99b472-81ad-44a9-900b-4b81040ff5ef">
-<meta property="og:image" content="https://firebasestorage.googleapis.com/v0/b/welcomewebworld-4097b.appspot.com/o/blogImg%2FHexo%2F2019-12-25_17-28-03.png?alt=media&token=955acc45-52cc-4357-b04c-1d904ccb0e2c">
-<meta property="og:image" content="https://firebasestorage.googleapis.com/v0/b/welcomewebworld-4097b.appspot.com/o/blogImg%2FHexo%2F2019-12-25_17-29-43.png?alt=media&token=c01945cc-0538-4b92-ac07-89001e3e9b20">
-<meta property="og:image" content="https://firebasestorage.googleapis.com/v0/b/welcomewebworld-4097b.appspot.com/o/blogImg%2FHexo%2F1577266334891.jpg?alt=media&token=e99d417c-b122-4ad3-954e-9db3521bba90">
+<meta property="og:image" content="https://pic.zkliang.com/2019-12-25_17-10-13.png">
+<meta property="og:image" content="https://pic.zkliang.com/1577265178107.jpg">
+<meta property="og:image" content="https://pic.zkliang.com/2019-12-25_16-42-25.png">
+<meta property="og:image" content="https://pic.zkliang.com/2019-12-25_17-23-35.png">
+<meta property="og:image" content="https://pic.zkliang.com/2019-12-25_17-24-19.png">
+<meta property="og:image" content="https://pic.zkliang.com/2019-12-25_17-28-03.png">
+<meta property="og:image" content="https://pic.zkliang.com/2019-12-25_17-29-43.png">
+<meta property="og:image" content="https://pic.zkliang.com/1577266334891.jpg">
 <meta property="article:published_time" content="2020-09-30T00:00:00.000Z">
 <meta property="article:modified_time" content="2020-09-30T00:00:00.000Z">
 <meta property="article:author" content="zkliang">
 <meta property="article:tag" content="Hexo">
 <meta property="article:tag" content="NexT">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://firebasestorage.googleapis.com/v0/b/welcomewebworld-4097b.appspot.com/o/blogImg%2FHexo%2F2019-12-25_17-10-13.png?alt=media&token=628084b0-5a09-4f95-852d-4ff75f91464d">
+<meta name="twitter:image" content="https://pic.zkliang.com/2019-12-25_17-10-13.png">
 
 
 <link rel="canonical" href="https://zkliang.com/2020/09/30/%E5%B0%86Hexo_NexT%E6%94%B9%E6%88%90Algolia%E6%90%9C%E7%B4%A2/">
@@ -379,27 +379,27 @@ IDE：VS Code</code></pre>
 <h2 id="Algolia"><a href="#Algolia" class="headerlink" title="Algolia"></a>Algolia</h2><p>在前面有讲到因为文章数量变多，所以 search.json 很肥大 (2.72 MB 左右，看似很小，其实每次点搜寻都要加载大概一秒左右)，也因为这个问题在开启搜寻时其实有点慢，所以我打算换成另一个在线搜寻服务，会写这一篇文章是因为似乎很少有比较完整的教学，所以就顺手写下来了。</p>
 <p>基本上 Algolia 免费账号就非常好用，可以记录 10,000 条文章记录，每个月可以搜寻 100,000 次，基本上对于一般部落客来讲算是非常足够了(对我自己来讲)</p>
 <h3 id="申请"><a href="#申请" class="headerlink" title="申请"></a>申请</h3><p>首先先打开 <a href="https://www.algolia.com/">algolia</a> 然后<a href="https://www.algolia.com/users/sign_up">登入</a>(上方类似开机的按钮)，接下来这边我就直接选 GitHub 登入</p>
-<p><a href="https://firebasestorage.googleapis.com/v0/b/welcomewebworld-4097b.appspot.com/o/blogImg%2FHexo%2F2019-12-25_17-10-13.png?alt=media&token=628084b0-5a09-4f95-852d-4ff75f91464d" title="登入"><img src="https://firebasestorage.googleapis.com/v0/b/welcomewebworld-4097b.appspot.com/o/blogImg%2FHexo%2F2019-12-25_17-10-13.png?alt=media&token=628084b0-5a09-4f95-852d-4ff75f91464d" alt="登入"></a></p>
+<p><a href="https://pic.zkliang.com/2019-12-25_17-10-13.png" title="登入"><img src="https://pic.zkliang.com/2019-12-25_17-10-13.png" alt="登入"></a></p>
 <p>登入</p>
 <p>接下来填写相关数据</p>
-<p><a href="https://firebasestorage.googleapis.com/v0/b/welcomewebworld-4097b.appspot.com/o/blogImg%2FHexo%2F1577265178107.jpg?alt=media&token=8073d0c0-8d4e-4c1f-8add-6e7dc739fa0f" title="相关资料"><img src="https://firebasestorage.googleapis.com/v0/b/welcomewebworld-4097b.appspot.com/o/blogImg%2FHexo%2F1577265178107.jpg?alt=media&token=8073d0c0-8d4e-4c1f-8add-6e7dc739fa0f" alt="相关资料"></a></p>
+<p><a href="https://pic.zkliang.com/1577265178107.jpg" title="相关资料"><img src="https://pic.zkliang.com/1577265178107.jpg" alt="相关资料"></a></p>
 <p>相关资料</p>
 <p>选择数据中心，默认选香港就好了</p>
-<p><a href="https://firebasestorage.googleapis.com/v0/b/welcomewebworld-4097b.appspot.com/o/blogImg%2FHexo%2F2019-12-25_16-42-25.png?alt=media&token=bb35c269-4b6e-439c-b971-3809bd37bc63" title="数据中心"><img src="https://firebasestorage.googleapis.com/v0/b/welcomewebworld-4097b.appspot.com/o/blogImg%2FHexo%2F2019-12-25_16-42-25.png?alt=media&token=bb35c269-4b6e-439c-b971-3809bd37bc63" alt="数据中心"></a></p>
+<p><a href="https://pic.zkliang.com/2019-12-25_16-42-25.png" title="数据中心"><img src="https://pic.zkliang.com/2019-12-25_16-42-25.png" alt="数据中心"></a></p>
 <p>数据中心</p>
 <p>接下来选择你要使用的项目类型 (SaaS)，下拉选单则选择「As soon as possible」，因为稍后就要使用了</p>
-<p><a href="https://firebasestorage.googleapis.com/v0/b/welcomewebworld-4097b.appspot.com/o/blogImg%2FHexo%2F2019-12-25_17-23-35.png?alt=media&token=34c198fc-9d51-4321-bb8d-b9841f89a117" title="SaaS"><img src="https://firebasestorage.googleapis.com/v0/b/welcomewebworld-4097b.appspot.com/o/blogImg%2FHexo%2F2019-12-25_17-23-35.png?alt=media&token=34c198fc-9d51-4321-bb8d-b9841f89a117" alt="SaaS"></a></p>
+<p><a href="https://pic.zkliang.com/2019-12-25_17-23-35.png" title="SaaS"><img src="https://pic.zkliang.com/2019-12-25_17-23-35.png" alt="SaaS"></a></p>
 <p>SaaS</p>
 <p>完成后点一下「Go to dashboard」</p>
-<p><a href="https://firebasestorage.googleapis.com/v0/b/welcomewebworld-4097b.appspot.com/o/blogImg%2FHexo%2F2019-12-25_17-24-19.png?alt=media&token=df99b472-81ad-44a9-900b-4b81040ff5ef" title="Go to dashboard"><img src="https://firebasestorage.googleapis.com/v0/b/welcomewebworld-4097b.appspot.com/o/blogImg%2FHexo%2F2019-12-25_17-24-19.png?alt=media&token=df99b472-81ad-44a9-900b-4b81040ff5ef" alt="Go to dashboard"></a></p>
+<p><a href="https://pic.zkliang.com/2019-12-25_17-24-19.png" title="Go to dashboard"><img src="https://pic.zkliang.com/2019-12-25_17-24-19.png" alt="Go to dashboard"></a></p>
 <p>Go to dashboard</p>
 <h3 id="dashboard"><a href="#dashboard" class="headerlink" title="dashboard"></a><a href="https://hsiangfeng.github.io/hexo/20191225/2266233686/#dashboard" title="dashboard"></a>dashboard</h3><p>进入 dashboard，它会要求你 「Create Index」</p>
-<p><a href="https://firebasestorage.googleapis.com/v0/b/welcomewebworld-4097b.appspot.com/o/blogImg%2FHexo%2F2019-12-25_17-28-03.png?alt=media&token=955acc45-52cc-4357-b04c-1d904ccb0e2c" title="Create Index"><img src="https://firebasestorage.googleapis.com/v0/b/welcomewebworld-4097b.appspot.com/o/blogImg%2FHexo%2F2019-12-25_17-28-03.png?alt=media&token=955acc45-52cc-4357-b04c-1d904ccb0e2c" alt="Create Index"></a></p>
+<p><a href="https://pic.zkliang.com/2019-12-25_17-28-03.png" title="Create Index"><img src="https://pic.zkliang.com/2019-12-25_17-28-03.png" alt="Create Index"></a></p>
 <p>Create Index</p>
-<p><a href="https://firebasestorage.googleapis.com/v0/b/welcomewebworld-4097b.appspot.com/o/blogImg%2FHexo%2F2019-12-25_17-29-43.png?alt=media&token=c01945cc-0538-4b92-ac07-89001e3e9b20" title="Create Index"><img src="https://firebasestorage.googleapis.com/v0/b/welcomewebworld-4097b.appspot.com/o/blogImg%2FHexo%2F2019-12-25_17-29-43.png?alt=media&token=c01945cc-0538-4b92-ac07-89001e3e9b20" alt="Create Index"></a></p>
+<p><a href="https://pic.zkliang.com/2019-12-25_17-29-43.png" title="Create Index"><img src="https://pic.zkliang.com/2019-12-25_17-29-43.png" alt="Create Index"></a></p>
 <p>Create Index</p>
 <p>新增完之后要来取得 API Keys，请复制 「Application ID」、「Search-Only API Key」以及「Admin API Key」</p>
-<p><a href="https://firebasestorage.googleapis.com/v0/b/welcomewebworld-4097b.appspot.com/o/blogImg%2FHexo%2F1577266334891.jpg?alt=media&token=e99d417c-b122-4ad3-954e-9db3521bba90" title="API Keys"><img src="https://firebasestorage.googleapis.com/v0/b/welcomewebworld-4097b.appspot.com/o/blogImg%2FHexo%2F1577266334891.jpg?alt=media&token=e99d417c-b122-4ad3-954e-9db3521bba90" alt="API Keys"></a></p>
+<p><a href="https://pic.zkliang.com/1577266334891.jpg" title="API Keys"><img src="https://pic.zkliang.com/1577266334891.jpg" alt="API Keys"></a></p>
 <p>API Keys</p>
 <h2 id="安装-hexo-algoliasearch"><a href="#安装-hexo-algoliasearch" class="headerlink" title="安装 hexo-algoliasearch"></a>安装 hexo-algoliasearch</h2><p>接下来要安装套件</p>
 <pre><code>npm install hexo-algoliasearch --save</code></pre>
