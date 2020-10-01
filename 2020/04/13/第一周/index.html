@@ -442,6 +442,13 @@ cal：显示日历 </code></pre>
 
 
       
+    
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -676,6 +683,23 @@ document.addEventListener('pjax:success', () => {
   
 
   
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/disqusjs@1.3.0/dist/disqusjs.css">
+
+<script>
+NexT.utils.loadComments('#disqus_thread', () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/disqusjs@1.3.0/dist/disqus.js', () => {
+    window.dsqjs = new DisqusJS({
+      api       : 'https://disqus.zkliang.workers.dev/' || 'https://disqus.com/api/',
+      apikey    : '62kqN91aAVjrkx5pdhxgwaT92msZaPDneQ8rMBivdt9auXTnPi0xCxmNO9nOILye',
+      shortname : 'zkliang',
+      url       : "https://zkliang.com/2020/04/13/%E7%AC%AC%E4%B8%80%E5%91%A8/",
+      identifier: "2020/04/13/第一周/",
+      title     : "第一周",
+    });
+  }, window.DisqusJS);
+});
+</script>
 
     </div>
 </body>

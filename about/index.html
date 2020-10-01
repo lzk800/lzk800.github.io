@@ -30,7 +30,7 @@
 <meta property="og:site_name" content="鲜橙多的博客">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-08-22T12:34:30.000Z">
-<meta property="article:modified_time" content="2020-10-01T12:47:59.231Z">
+<meta property="article:modified_time" content="2020-10-01T12:49:09.515Z">
 <meta property="article:author" content="zkliang">
 <meta name="twitter:card" content="summary">
 
@@ -314,6 +314,13 @@
 
 
       
+    
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -548,6 +555,23 @@ document.addEventListener('pjax:success', () => {
   
 
   
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/disqusjs@1.3.0/dist/disqusjs.css">
+
+<script>
+NexT.utils.loadComments('#disqus_thread', () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/disqusjs@1.3.0/dist/disqus.js', () => {
+    window.dsqjs = new DisqusJS({
+      api       : 'https://disqus.zkliang.workers.dev/' || 'https://disqus.com/api/',
+      apikey    : '62kqN91aAVjrkx5pdhxgwaT92msZaPDneQ8rMBivdt9auXTnPi0xCxmNO9nOILye',
+      shortname : 'zkliang',
+      url       : "https://zkliang.com/about/index.html",
+      identifier: "about/index.html",
+      title     : "about",
+    });
+  }, window.DisqusJS);
+});
+</script>
 
     </div>
 </body>

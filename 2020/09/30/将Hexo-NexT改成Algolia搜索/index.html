@@ -477,6 +477,13 @@ hexo deploy</code></pre>
 
 
       
+    
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -711,6 +718,23 @@ document.addEventListener('pjax:success', () => {
   
 
   
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/disqusjs@1.3.0/dist/disqusjs.css">
+
+<script>
+NexT.utils.loadComments('#disqus_thread', () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/disqusjs@1.3.0/dist/disqus.js', () => {
+    window.dsqjs = new DisqusJS({
+      api       : 'https://disqus.zkliang.workers.dev/' || 'https://disqus.com/api/',
+      apikey    : '62kqN91aAVjrkx5pdhxgwaT92msZaPDneQ8rMBivdt9auXTnPi0xCxmNO9nOILye',
+      shortname : 'zkliang',
+      url       : "https://zkliang.com/2020/09/30/%E5%B0%86Hexo-NexT%E6%94%B9%E6%88%90Algolia%E6%90%9C%E7%B4%A2/",
+      identifier: "2020/09/30/将Hexo-NexT改成Algolia搜索/",
+      title     : "将 Hexo-NexT 改成 Algolia 搜索",
+    });
+  }, window.DisqusJS);
+});
+</script>
 
     </div>
 </body>
