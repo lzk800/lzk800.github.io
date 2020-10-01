@@ -222,20 +222,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-count">10</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-count">2</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">2</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -274,126 +274,6 @@
       
 
       
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://zkliang.com/2020/09/30/%E5%B0%86%20Hexo%20NexT%20%E6%94%B9%E6%88%90%20Algolia%20%E6%90%9C%E7%B4%A2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/2090024?s=400&v=4">
-      <meta itemprop="name" content="zkliang">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="鲜橙多的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/09/30/%E5%B0%86%20Hexo%20NexT%20%E6%94%B9%E6%88%90%20Algolia%20%E6%90%9C%E7%B4%A2/" class="post-title-link" itemprop="url">将 Hexo NexT 改成 Algolia 搜索</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2020-09-30 00:00:00" itemprop="dateCreated datePublished" datetime="2020-09-30T00:00:00+00:00">2020-09-30</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Hexo/" itemprop="url" rel="index"><span itemprop="name">Hexo</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/2020/09/30/%E5%B0%86%20Hexo%20NexT%20%E6%94%B9%E6%88%90%20Algolia%20%E6%90%9C%E7%B4%A2/" class="post-meta-item leancloud_visitors" data-flag-title="将 Hexo NexT 改成 Algolia 搜索" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2020/09/30/%E5%B0%86%20Hexo%20NexT%20%E6%94%B9%E6%88%90%20Algolia%20%E6%90%9C%E7%B4%A2/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2020/09/30/%E5%B0%86%20Hexo%20NexT%20%E6%94%B9%E6%88%90%20Algolia%20%E6%90%9C%E7%B4%A2/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          前言
-最近发现文章越来越肥大，而导致 search.json 越来越肥，所以打算换成另一种搜寻方法，也就是使用 Algolia 服务。
-
-环境参考
-版本与环境
-操作系统： Windows10 X64
-Nodejs:：V11.7.0
-IDE：VS Code
-
-Hexo 版本
- * hexo: 3.8.0
-   
-   
- * hexo-cli: 2.0.0
-   
-   
-
-Algolia
-在前面有
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/09/30/%E5%B0%86%20Hexo%20NexT%20%E6%94%B9%E6%88%90%20Algolia%20%E6%90%9C%E7%B4%A2/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
     
 
 
@@ -1427,11 +1307,120 @@ cp -r /etc/p*[^0-9] /tmp/mytest1/
 
 
 
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://zkliang.com/2020/04/13/%E7%AC%AC%E4%B8%80%E5%91%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/2090024?s=400&v=4">
+      <meta itemprop="name" content="zkliang">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="鲜橙多的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/04/13/%E7%AC%AC%E4%B8%80%E5%91%A8/" class="post-title-link" itemprop="url">第一周</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-04-13 00:00:00" itemprop="dateCreated datePublished" datetime="2020-04-13T00:00:00+00:00">2020-04-13</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2020-08-22 00:00:00" itemprop="dateModified" datetime="2020-08-22T00:00:00+00:00">2020-08-22</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E9%A9%AC%E5%93%A5Linux/" itemprop="url" rel="index"><span itemprop="name">马哥Linux</span></a>
+        </span>
+    </span>
 
   
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
-  </nav>
+    <span id="/2020/04/13/%E7%AC%AC%E4%B8%80%E5%91%A8/" class="post-meta-item leancloud_visitors" data-flag-title="第一周" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/04/13/%E7%AC%AC%E4%B8%80%E5%91%A8/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/04/13/%E7%AC%AC%E4%B8%80%E5%91%A8/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          一、按系列罗列Linux的发行版，并描述不同发行版之间的联系与区别。
+Debian是三大发行版中唯一以社区形式运作，不以商业公司形式运作。是一个致力于创建自由操作系统的合作组织。而且debian开发者所创建的操作系统中绝大部分基础工具来自于GNU工程。
+Fedore是一款基于linux的操作系统，也是一组维持计算机正常运行的软件集合。由红帽公司赞助。
+Suse是基于Slackware二次开发的一款
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/04/13/%E7%AC%AC%E4%B8%80%E5%91%A8/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+  
 
 
 
