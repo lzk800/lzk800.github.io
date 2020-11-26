@@ -394,7 +394,7 @@ while [$HostId -le 254];do
 done
 wait</code></pre>
 <h2 id="3、每周的工作日 1-30，将 -etc 备份至 -backup 目录中，保存的文件名称格式 - 为“etcbak-yyyy-mm-dd-HH-tar-xz”，其中日期是前一天的时间"><a href="#3、每周的工作日 1-30，将 -etc 备份至 -backup 目录中，保存的文件名称格式 - 为“etcbak-yyyy-mm-dd-HH-tar-xz”，其中日期是前一天的时间" class="headerlink" title="3、每周的工作日 1:30，将 /etc 备份至 /backup 目录中，保存的文件名称格式 为“etcbak-yyyy-mm-dd-HH.tar.xz”，其中日期是前一天的时间"></a>3、每周的工作日 1:30，将 /etc 备份至 /backup 目录中，保存的文件名称格式 为“etcbak-yyyy-mm-dd-HH.tar.xz”，其中日期是前一天的时间 </h2><pre><code>~]# crontab -e
-30 1 * * 1-5 /usr/bin/tar -Jcf etcbak-`date -d &quot;-1 day&quot; +%Y-%m-%d-%H` .tar.xz /etc &amp;&gt; /dev/null</code></pre>
+30 1 * * 1-5 /usr/bin/tar -Jcf etcbak-`date -d &quot;-1 day&quot;+%Y-%m-%d-%H`.tar.xz /etc &amp;&gt; /dev/null</code></pre>
 <h2 id="4、工作日时间，每 10 分钟执行一次磁盘空间检查，一旦发现任何分区利用率高 - 于 80-，就发送邮件报警"><a href="#4、工作日时间，每 10 分钟执行一次磁盘空间检查，一旦发现任何分区利用率高 - 于 80-，就发送邮件报警" class="headerlink" title="4、工作日时间，每 10 分钟执行一次磁盘空间检查，一旦发现任何分区利用率高 于 80%，就发送邮件报警"></a>4、工作日时间，每 10 分钟执行一次磁盘空间检查，一旦发现任何分区利用率高 于 80%，就发送邮件报警 </h2><pre><code>VALUE=80
 USAGEMAX=`df|sed -nr &#39;/^\/dev\/sd/s@.* ([0-9]+)%.*@\1@p&#39;|sort -nr|head -1`
 if [$USAGEMAX -gt $VALUE];then
