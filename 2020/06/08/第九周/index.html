@@ -24,16 +24,20 @@
     var CONFIG = {"hostname":"zkliang.com","root":"/","scheme":"Gemini","version":"8.0.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"algolia":{"appID":"GBI3X4HQ5T","apiKey":"4356c718dc242bca59a4e2fce2e71066","indexName":"Hexo","hits":{"per_page":10}}};
   </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="鲜橙多的博客">
-<meta property="og:url" content="https://zkliang.com/categories/Linux/index.html">
+  <meta name="description" content="1、显示统计占用系统内存最多的进程，并排序。 ps aux --sort&#x3D;-rss  2、编写脚本，使用for和while分别实现192.168.0.0&#x2F;24网段内，地址是否能够ping通，若ping通则输出”success!”，若ping不通则输出”fail!” for循环： #!&#x2F;bin&#x2F;bash # NetId&#x3D;192.168.0. declare -i HostId&#x3D;1 for HostI">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第九周">
+<meta property="og:url" content="https://zkliang.com/2020/06/08/%E7%AC%AC%E4%B9%9D%E5%91%A8/index.html">
 <meta property="og:site_name" content="鲜橙多的博客">
+<meta property="og:description" content="1、显示统计占用系统内存最多的进程，并排序。 ps aux --sort&#x3D;-rss  2、编写脚本，使用for和while分别实现192.168.0.0&#x2F;24网段内，地址是否能够ping通，若ping通则输出”success!”，若ping不通则输出”fail!” for循环： #!&#x2F;bin&#x2F;bash # NetId&#x3D;192.168.0. declare -i HostId&#x3D;1 for HostI">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-06-08T00:00:00.000Z">
+<meta property="article:modified_time" content="2020-11-26T00:00:00.000Z">
 <meta property="article:author" content="zkliang">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://zkliang.com/categories/Linux/">
+<link rel="canonical" href="https://zkliang.com/2020/06/08/%E7%AC%AC%E4%B9%9D%E5%91%A8/">
 
 
 <script data-pjax class="page-configurations">
@@ -41,12 +45,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>分类: Linux | 鲜橙多的博客</title>
+  <title>第九周 | 鲜橙多的博客</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-178722830-1"></script>
     <script data-pjax>
@@ -195,7 +199,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -207,6 +211,7 @@
 
       <!--noindex-->
       <section class="post-toc-wrap sidebar-panel">
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1%E3%80%81%E6%98%BE%E7%A4%BA%E7%BB%9F%E8%AE%A1%E5%8D%A0%E7%94%A8%E7%B3%BB%E7%BB%9F%E5%86%85%E5%AD%98%E6%9C%80%E5%A4%9A%E7%9A%84%E8%BF%9B%E7%A8%8B%EF%BC%8C%E5%B9%B6%E6%8E%92%E5%BA%8F%E3%80%82"><span class="nav-text">1、显示统计占用系统内存最多的进程，并排序。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2%E3%80%81%E7%BC%96%E5%86%99%E8%84%9A%E6%9C%AC%EF%BC%8C%E4%BD%BF%E7%94%A8%20for%20%E5%92%8C%20while%20%E5%88%86%E5%88%AB%E5%AE%9E%E7%8E%B0%20192-168-0-0-24%20%E7%BD%91%E6%AE%B5%E5%86%85%EF%BC%8C%E5%9C%B0%E5%9D%80%E6%98%AF%E5%90%A6%E8%83%BD%E5%A4%9F%20ping%20%E9%80%9A%EF%BC%8C%E8%8B%A5%20ping%20%E9%80%9A%E5%88%99%E8%BE%93%E5%87%BA%E2%80%9Dsuccess-%E2%80%9D%EF%BC%8C%E8%8B%A5%20ping%20%E4%B8%8D%E9%80%9A%E5%88%99%E8%BE%93%E5%87%BA%E2%80%9Dfail-%E2%80%9D"><span class="nav-text">2、编写脚本，使用 for 和 while 分别实现 192.168.0.0&#x2F;24 网段内，地址是否能够 ping 通，若 ping 通则输出”success!”，若 ping 不通则输出”fail!”</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#for%20%E5%BE%AA%E7%8E%AF%EF%BC%9A"><span class="nav-text">for 循环：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#while%20%E5%BE%AA%E7%8E%AF%EF%BC%9A"><span class="nav-text">while 循环：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3%E3%80%81%E6%AF%8F%E5%91%A8%E7%9A%84%E5%B7%A5%E4%BD%9C%E6%97%A5%201-30%EF%BC%8C%E5%B0%86%20-etc%20%E5%A4%87%E4%BB%BD%E8%87%B3%20-backup%20%E7%9B%AE%E5%BD%95%E4%B8%AD%EF%BC%8C%E4%BF%9D%E5%AD%98%E7%9A%84%E6%96%87%E4%BB%B6%E5%90%8D%E7%A7%B0%E6%A0%BC%E5%BC%8F%20-%20%E4%B8%BA%E2%80%9Cetcbak-yyyy-mm-dd-HH-tar-xz%E2%80%9D%EF%BC%8C%E5%85%B6%E4%B8%AD%E6%97%A5%E6%9C%9F%E6%98%AF%E5%89%8D%E4%B8%80%E5%A4%A9%E7%9A%84%E6%97%B6%E9%97%B4"><span class="nav-text">3、每周的工作日 1:30，将 &#x2F;etc 备份至 &#x2F;backup 目录中，保存的文件名称格式 为“etcbak-yyyy-mm-dd-HH.tar.xz”，其中日期是前一天的时间 </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4%E3%80%81%E5%B7%A5%E4%BD%9C%E6%97%A5%E6%97%B6%E9%97%B4%EF%BC%8C%E6%AF%8F%2010%20%E5%88%86%E9%92%9F%E6%89%A7%E8%A1%8C%E4%B8%80%E6%AC%A1%E7%A3%81%E7%9B%98%E7%A9%BA%E9%97%B4%E6%A3%80%E6%9F%A5%EF%BC%8C%E4%B8%80%E6%97%A6%E5%8F%91%E7%8E%B0%E4%BB%BB%E4%BD%95%E5%88%86%E5%8C%BA%E5%88%A9%E7%94%A8%E7%8E%87%E9%AB%98%20-%20%E4%BA%8E%2080-%EF%BC%8C%E5%B0%B1%E5%8F%91%E9%80%81%E9%82%AE%E4%BB%B6%E6%8A%A5%E8%AD%A6"><span class="nav-text">4、工作日时间，每 10 分钟执行一次磁盘空间检查，一旦发现任何分区利用率高 于 80%，就发送邮件报警 </span></a></li></ol></div>
       </section>
       <!--/noindex-->
 
@@ -270,78 +275,165 @@
 </noscript>
 
 
-    <div class="main-inner category posts-collapse">
+    <div class="main-inner post posts-expand">
       
 
       
 
   
-  
-  
-  <div class="post-block">
-    <div class="post-content">
-      <div class="collection-title">
-        <h2 class="collection-header">Linux
-          <small>分类</small>
-        </h2>
-      </div>
 
-      
-    <div class="collection-year">
-      <span class="collection-header">2020</span>
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://zkliang.com/2020/06/08/%E7%AC%AC%E4%B9%9D%E5%91%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/2090024?s=400&v=4">
+      <meta itemprop="name" content="zkliang">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="鲜橙多的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          第九周
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-06-08 00:00:00" itemprop="dateCreated datePublished" datetime="2020-06-08T00:00:00+00:00">2020-06-08</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2020-11-26 00:00:00" itemprop="dateModified" datetime="2020-11-26T00:00:00+00:00">2020-11-26</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E9%A9%AC%E5%93%A5Linux/" itemprop="url" rel="index"><span itemprop="name">马哥Linux</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2020/06/08/%E7%AC%AC%E4%B9%9D%E5%91%A8/" class="post-meta-item leancloud_visitors" data-flag-title="第九周" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/06/08/%E7%AC%AC%E4%B9%9D%E5%91%A8/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/06/08/%E7%AC%AC%E4%B9%9D%E5%91%A8/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="1、显示统计占用系统内存最多的进程，并排序。"><a href="#1、显示统计占用系统内存最多的进程，并排序。" class="headerlink" title="1、显示统计占用系统内存最多的进程，并排序。"></a>1、显示统计占用系统内存最多的进程，并排序。</h2><pre><code>ps aux --sort=-rss</code></pre>
+<h2 id="2、编写脚本，使用 for 和 while 分别实现 192-168-0-0-24 网段内，地址是否能够 ping 通，若 ping 通则输出”success-”，若 ping 不通则输出”fail-”"><a href="#2、编写脚本，使用 for 和 while 分别实现 192-168-0-0-24 网段内，地址是否能够 ping 通，若 ping 通则输出”success-”，若 ping 不通则输出”fail-”" class="headerlink" title="2、编写脚本，使用 for 和 while 分别实现 192.168.0.0/24 网段内，地址是否能够 ping 通，若 ping 通则输出”success!”，若 ping 不通则输出”fail!”"></a>2、编写脚本，使用 for 和 while 分别实现 192.168.0.0/24 网段内，地址是否能够 ping 通，若 ping 通则输出”success!”，若 ping 不通则输出”fail!”</h2><h3 id="for 循环："><a href="#for 循环：" class="headerlink" title="for 循环："></a>for 循环：</h3><pre><code>#!/bin/bash
+#
+NetId=192.168.0.
+declare -i HostId=1
+for HostId in &#123;1..254&#125;;do
+&#123;
+    if /bin/ping -c 1 -W 1 $NetId$HostId &gt; /dev/null;then
+        echo &quot;$NetId$HostId lived,Ping Test success!&quot;
+    else
+        echo &quot;$NetId$HostId not lived,Ping Test fail!&quot;
+    fi
+&#125; &amp;
+done
+wait</code></pre>
+<h3 id="while 循环："><a href="#while 循环：" class="headerlink" title="while 循环："></a>while 循环：</h3><pre><code>#!/bin/bash
+#
+NetId=192.168.0.
+declare -i HostId=1
+while [$HostId -le 254];do
+&#123;
+    /bin/ping -c 1 -W 1 $NetId$HostId &gt; /dev/null
+    if [$? -eq 0];then
+        echo &quot;$NetId$HostId lived,Ping Test success!&quot;
+    else
+        echo &quot;$NetId$HostId not lived,Ping Test fail!&quot;
+    fi
+&#125; &amp;
+    let HostId++
+done
+wait</code></pre>
+<h2 id="3、每周的工作日 1-30，将 -etc 备份至 -backup 目录中，保存的文件名称格式 - 为“etcbak-yyyy-mm-dd-HH-tar-xz”，其中日期是前一天的时间"><a href="#3、每周的工作日 1-30，将 -etc 备份至 -backup 目录中，保存的文件名称格式 - 为“etcbak-yyyy-mm-dd-HH-tar-xz”，其中日期是前一天的时间" class="headerlink" title="3、每周的工作日 1:30，将 /etc 备份至 /backup 目录中，保存的文件名称格式 为“etcbak-yyyy-mm-dd-HH.tar.xz”，其中日期是前一天的时间"></a>3、每周的工作日 1:30，将 /etc 备份至 /backup 目录中，保存的文件名称格式 为“etcbak-yyyy-mm-dd-HH.tar.xz”，其中日期是前一天的时间 </h2><pre><code>~]# crontab -e
+30 1 * * 1-5 /usr/bin/tar -Jcf etcbak-`date -d &quot;-1 day&quot; +%Y-%m-%d-%H` .tar.xz /etc &amp;&gt; /dev/null</code></pre>
+<h2 id="4、工作日时间，每 10 分钟执行一次磁盘空间检查，一旦发现任何分区利用率高 - 于 80-，就发送邮件报警"><a href="#4、工作日时间，每 10 分钟执行一次磁盘空间检查，一旦发现任何分区利用率高 - 于 80-，就发送邮件报警" class="headerlink" title="4、工作日时间，每 10 分钟执行一次磁盘空间检查，一旦发现任何分区利用率高 于 80%，就发送邮件报警"></a>4、工作日时间，每 10 分钟执行一次磁盘空间检查，一旦发现任何分区利用率高 于 80%，就发送邮件报警 </h2><pre><code>VALUE=80
+USAGEMAX=`df|sed -nr &#39;/^\/dev\/sd/s@.* ([0-9]+)%.*@\1@p&#39;|sort -nr|head -1`
+if [$USAGEMAX -gt $VALUE];then
+    echo &quot;Disk usage is $USAGEMAX, please clean in time!&quot; |mail -s &quot;Warnig&quot; root@`hostname`
+fi</code></pre>
+
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2020-08-22T00:00:00+00:00"
-              content="2020-08-22">
-          08-22
-        </time>
-      </div>
+    
+    
+    
 
-      <div class="post-title">
-          <a class="post-title-link" href="/2020/08/22/Git%E4%BD%BF%E7%94%A8%E5%B0%8F%E6%8A%80%E5%B7%A7/" itemprop="url">
-            <span itemprop="name">Git 使用小技巧</span>
-          </a>
-      </div>
+    <footer class="post-footer">
 
-      
-    </header>
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2020/06/01/%E7%AC%AC%E5%85%AB%E5%91%A8/" rel="prev" title="第八周">
+                  <i class="fa fa-chevron-left"></i> 第八周
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2020/08/22/Vim%E9%94%AE%E4%BD%8D%E5%9B%BE/" rel="next" title="Vim 键位图">
+                  Vim 键位图 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
   </article>
+</div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2020-08-22T00:00:00+00:00"
-              content="2020-08-22">
-          08-22
-        </time>
-      </div>
 
-      <div class="post-title">
-          <a class="post-title-link" href="/2020/08/22/Vim%E9%94%AE%E4%BD%8D%E5%9B%BE/" itemprop="url">
-            <span itemprop="name">Vim 键位图</span>
-          </a>
-      </div>
 
-      
-    </header>
-  </article>
-
-    </div>
-  </div>
-  
-  
-  
-
-  
 
 
 
       
+    <div class="comments" id="valine-comments"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -509,7 +601,7 @@ NexT.utils.loadComments('#valine-comments', () => {
   NexT.utils.getScript('//cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', () => {
     new Valine(Object.assign({"enable":true,"appId":"xSyXpjsDJzJpO9tDIvmj3NkK-MdYXbMMI","appKey":"f1m1Dr2aM6WwHyzQTAnSVFNX","serverURLs":null,"placeholder":"Just go go","avatar":"mm","meta":["nick","mail","link"],"pageSize":10,"lang":null,"visitor":true,"comment_count":true,"recordIP":false,"enableQQ":true,"requiredFields":["nick"]}, {
       el: '#valine-comments',
-      path: "/categories/Linux/",
+      path: "/2020/06/08/%E7%AC%AC%E4%B9%9D%E5%91%A8/",
       serverURLs: "https://xsyxpjsd.api.lncldglobal.com"
     }));
   }, window.Valine);
