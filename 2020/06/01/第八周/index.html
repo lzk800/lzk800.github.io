@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
 <meta name="generator" content="Hexo 5.2.0">
+
+
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-blog.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-blog.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-blog.png">
@@ -14,17 +16,16 @@
 
 
 
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.0/css/all.min.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.1/css/all.min.css">
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.css">
   <script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js"></script>
 
 <script class="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"zkliang.com","root":"/","scheme":"Gemini","version":"8.0.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"algolia":{"appID":"GBI3X4HQ5T","apiKey":"4356c718dc242bca59a4e2fce2e71066","indexName":"Hexo","hits":{"per_page":10}}};
+    var CONFIG = {"hostname":"zkliang.com","root":"/","images":"/images","scheme":"Gemini","version":"8.1.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"algolia":{"appID":"GBI3X4HQ5T","apiKey":"4356c718dc242bca59a4e2fce2e71066","indexName":"Hexo","hits":{"per_page":10}}};
   </script>
-
-  <meta name="description" content="1、简述OSIosi七层模型和TCP&#x2F;IP五层模型 (1) OSI七层模型 第七层 应用层 应用层（Application Layer） 提供为应用软件而设的接口，以设置与另一应用软件之间的通信。例如：HTTP、HTTPS、FTP、Telnet、SSH、SMTP、POP3等。  第六层 表达层 表达层（Presentation Layer） 把数据转换为能与接收者的系统格式兼容并适合传输的格式。">
+<meta name="description" content="1、简述OSIosi七层模型和TCP&#x2F;IP五层模型 (1) OSI七层模型 第七层 应用层 应用层（Application Layer） 提供为应用软件而设的接口，以设置与另一应用软件之间的通信。例如：HTTP、HTTPS、FTP、Telnet、SSH、SMTP、POP3等。  第六层 表达层 表达层（Presentation Layer） 把数据转换为能与接收者的系统格式兼容并适合传输的格式。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="第八周">
 <meta property="og:url" content="https://zkliang.com/2020/06/01/%E7%AC%AC%E5%85%AB%E5%91%A8/index.html">
@@ -49,8 +50,7 @@
     lang   : 'zh-CN'
   };
 </script>
-
-  <title>第八周 | 鲜橙多的博客</title>
+<title>第八周 | 鲜橙多的博客</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-178722830-1"></script>
     <script data-pjax>
@@ -61,9 +61,6 @@
         gtag('config', 'UA-178722830-1');
       }
     </script>
-
-
-
 
 
 
@@ -168,8 +165,7 @@
 
 
   <div class="search-pop-overlay">
-    <div class="popup search-popup">
-        <div class="search-header">
+    <div class="popup search-popup"><div class="search-header">
   <span class="search-icon">
     <i class="fa fa-search"></i>
   </span>
@@ -184,7 +180,6 @@
   <div class="algolia-pagination"></div>
 </div>
 
-      
     </div>
   </div>
 
@@ -209,14 +204,15 @@
         </li>
       </ul>
 
-      <!--noindex-->
-      <section class="post-toc-wrap sidebar-panel">
-          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1%E3%80%81%E7%AE%80%E8%BF%B0%20OSIosi%20%E4%B8%83%E5%B1%82%E6%A8%A1%E5%9E%8B%E5%92%8C%20TCP-IP%20%E4%BA%94%E5%B1%82%E6%A8%A1%E5%9E%8B"><span class="nav-text">1、简述 OSIosi 七层模型和 TCP&#x2F;IP 五层模型 </span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-OSI%20%E4%B8%83%E5%B1%82%E6%A8%A1%E5%9E%8B"><span class="nav-text">(1) OSI 七层模型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC%E4%B8%83%E5%B1%82%20-%20%E5%BA%94%E7%94%A8%E5%B1%82"><span class="nav-text"> 第七层 应用层 </span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC%E5%85%AD%E5%B1%82%20-%20%E8%A1%A8%E8%BE%BE%E5%B1%82"><span class="nav-text">第六层 表达层 </span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC%E4%BA%94%E5%B1%82%20-%20%E4%BC%9A%E8%AF%9D%E5%B1%82"><span class="nav-text">第五层 会话层 </span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC%E5%9B%9B%E5%B1%82%20-%20%E4%BC%A0%E8%BE%93%E5%B1%82"><span class="nav-text">第四层 传输层 </span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC%E4%B8%89%E5%B1%82%20-%20%E7%BD%91%E7%BB%9C%E5%B1%82"><span class="nav-text">第三层 网络层 </span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E5%B1%82%20-%20%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82"><span class="nav-text">第二层 数据链路层 </span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E5%B1%82%20-%20%E7%89%A9%E7%90%86%E5%B1%82"><span class="nav-text">第一层 物理层 </span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-TCP-IP%20%E4%BA%94%E5%B1%82%EF%BC%88%E5%9B%9B%E5%B1%82%EF%BC%89%E6%A8%A1%E5%9E%8B"><span class="nav-text">(2) TCP&#x2F;IP 五层（四层）模型 </span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC%E4%BA%94%E5%B1%82%EF%BC%9A%E5%BA%94%E7%94%A8%E5%B1%82"><span class="nav-text"> 第五层：应用层 </span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC%E5%9B%9B%E5%B1%82%EF%BC%9A%E4%BC%A0%E8%BE%93%E5%B1%82"><span class="nav-text">第四层：传输层 </span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC%E4%B8%89%E5%B1%82%EF%BC%9A%E7%BD%91%E7%BB%9C%E5%B1%82"><span class="nav-text">第三层：网络层 </span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E5%B1%82%EF%BC%9A%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82"><span class="nav-text">第二层：数据链路层 </span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E5%B1%82%EF%BC%9A%E7%89%A9%E7%90%86%E5%B1%82"><span class="nav-text">第一层：物理层 </span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2%E3%80%81%E6%80%BB%E7%BB%93%E6%8F%8F%E8%BF%B0%20TCP%20%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B"><span class="nav-text">2、总结描述 TCP 三次握手四次挥手 </span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B"><span class="nav-text"> 三次握手 </span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B"><span class="nav-text">四次挥手 </span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3%E3%80%81%E6%8F%8F%E8%BF%B0%20TCP%20%E5%92%8C%20UDP%20%E5%8C%BA%E5%88%AB"><span class="nav-text">3、描述 TCP 和 UDP 区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4%E3%80%81%E6%80%BB%E7%BB%93%20IP%20%E5%88%86%E7%B1%BB%E4%BB%A5%E5%8F%8A%E6%AF%8F%E4%B8%AA%E5%88%86%E7%B1%BB%E5%8F%AF%E4%BB%A5%E5%88%86%E9%85%8D%E7%9A%84%20IP%20%E6%95%B0%E9%87%8F"><span class="nav-text">4、总结 IP 分类以及每个分类可以分配的 IP 数量 </span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#A%20%E7%B1%BB%EF%BC%9A"><span class="nav-text">A 类：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#B%20%E7%B1%BB%EF%BC%9A"><span class="nav-text">B 类：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C%20%E7%B1%BB%EF%BC%9A"><span class="nav-text">C 类：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#D%20%E7%B1%BB%EF%BC%9A"><span class="nav-text">D 类：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5%E3%80%81%E6%80%BB%E7%BB%93%20IP%20%E9%85%8D%E7%BD%AE%E6%96%B9%E6%B3%95"><span class="nav-text">5、总结 IP 配置方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-ifconfig%20%E5%91%BD%E4%BB%A4%EF%BC%9A"><span class="nav-text">(1) ifconfig 命令：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-ip-address%20%E5%91%BD%E4%BB%A4"><span class="nav-text">(2) ip address 命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-nmcli%20%E5%91%BD%E4%BB%A4"><span class="nav-text">(3) nmcli 命令</span></a></li></ol></li></ol></div>
-      </section>
-      <!--/noindex-->
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <section class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1%E3%80%81%E7%AE%80%E8%BF%B0%20OSIosi%20%E4%B8%83%E5%B1%82%E6%A8%A1%E5%9E%8B%E5%92%8C%20TCP-IP%20%E4%BA%94%E5%B1%82%E6%A8%A1%E5%9E%8B"><span class="nav-text">1、简述 OSIosi 七层模型和 TCP&#x2F;IP 五层模型 </span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-OSI%20%E4%B8%83%E5%B1%82%E6%A8%A1%E5%9E%8B"><span class="nav-text">(1) OSI 七层模型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC%E4%B8%83%E5%B1%82%20-%20%E5%BA%94%E7%94%A8%E5%B1%82"><span class="nav-text"> 第七层 应用层 </span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC%E5%85%AD%E5%B1%82%20-%20%E8%A1%A8%E8%BE%BE%E5%B1%82"><span class="nav-text">第六层 表达层 </span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC%E4%BA%94%E5%B1%82%20-%20%E4%BC%9A%E8%AF%9D%E5%B1%82"><span class="nav-text">第五层 会话层 </span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC%E5%9B%9B%E5%B1%82%20-%20%E4%BC%A0%E8%BE%93%E5%B1%82"><span class="nav-text">第四层 传输层 </span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC%E4%B8%89%E5%B1%82%20-%20%E7%BD%91%E7%BB%9C%E5%B1%82"><span class="nav-text">第三层 网络层 </span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E5%B1%82%20-%20%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82"><span class="nav-text">第二层 数据链路层 </span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E5%B1%82%20-%20%E7%89%A9%E7%90%86%E5%B1%82"><span class="nav-text">第一层 物理层 </span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-TCP-IP%20%E4%BA%94%E5%B1%82%EF%BC%88%E5%9B%9B%E5%B1%82%EF%BC%89%E6%A8%A1%E5%9E%8B"><span class="nav-text">(2) TCP&#x2F;IP 五层（四层）模型 </span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC%E4%BA%94%E5%B1%82%EF%BC%9A%E5%BA%94%E7%94%A8%E5%B1%82"><span class="nav-text"> 第五层：应用层 </span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC%E5%9B%9B%E5%B1%82%EF%BC%9A%E4%BC%A0%E8%BE%93%E5%B1%82"><span class="nav-text">第四层：传输层 </span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC%E4%B8%89%E5%B1%82%EF%BC%9A%E7%BD%91%E7%BB%9C%E5%B1%82"><span class="nav-text">第三层：网络层 </span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E5%B1%82%EF%BC%9A%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82"><span class="nav-text">第二层：数据链路层 </span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E5%B1%82%EF%BC%9A%E7%89%A9%E7%90%86%E5%B1%82"><span class="nav-text">第一层：物理层 </span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2%E3%80%81%E6%80%BB%E7%BB%93%E6%8F%8F%E8%BF%B0%20TCP%20%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B"><span class="nav-text">2、总结描述 TCP 三次握手四次挥手 </span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B"><span class="nav-text"> 三次握手 </span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B"><span class="nav-text">四次挥手 </span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3%E3%80%81%E6%8F%8F%E8%BF%B0%20TCP%20%E5%92%8C%20UDP%20%E5%8C%BA%E5%88%AB"><span class="nav-text">3、描述 TCP 和 UDP 区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4%E3%80%81%E6%80%BB%E7%BB%93%20IP%20%E5%88%86%E7%B1%BB%E4%BB%A5%E5%8F%8A%E6%AF%8F%E4%B8%AA%E5%88%86%E7%B1%BB%E5%8F%AF%E4%BB%A5%E5%88%86%E9%85%8D%E7%9A%84%20IP%20%E6%95%B0%E9%87%8F"><span class="nav-text">4、总结 IP 分类以及每个分类可以分配的 IP 数量 </span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#A%20%E7%B1%BB%EF%BC%9A"><span class="nav-text">A 类：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#B%20%E7%B1%BB%EF%BC%9A"><span class="nav-text">B 类：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C%20%E7%B1%BB%EF%BC%9A"><span class="nav-text">C 类：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#D%20%E7%B1%BB%EF%BC%9A"><span class="nav-text">D 类：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5%E3%80%81%E6%80%BB%E7%BB%93%20IP%20%E9%85%8D%E7%BD%AE%E6%96%B9%E6%B3%95"><span class="nav-text">5、总结 IP 配置方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-ifconfig%20%E5%91%BD%E4%BB%A4%EF%BC%9A"><span class="nav-text">(1) ifconfig 命令：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-ip-address%20%E5%91%BD%E4%BB%A4"><span class="nav-text">(2) ip address 命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-nmcli%20%E5%91%BD%E4%BB%A4"><span class="nav-text">(3) nmcli 命令</span></a></li></ol></li></ol></div>
+        </section>
+        <!--/noindex-->
 
-      <section class="site-overview-wrap sidebar-panel">
-        <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <section class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <img class="site-author-image" itemprop="image" alt="zkliang"
       src="https://avatars0.githubusercontent.com/u/2090024?s=400&v=4">
   <p class="site-author-name" itemprop="name">zkliang</p>
@@ -256,7 +252,8 @@
 
 
 
-      </section>
+        </section>
+      </div>
     </div>
   </aside>
   <div class="sidebar-dimmer"></div>
@@ -276,9 +273,7 @@
 
 
     <div class="main-inner post posts-expand">
-      
 
-      
 
   
 
@@ -339,19 +334,6 @@
       <span class="post-meta-item-text">阅读次数：</span>
       <span class="leancloud-visitors-count"></span>
     </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2020/06/01/%E7%AC%AC%E5%85%AB%E5%91%A8/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2020/06/01/%E7%AC%AC%E5%85%AB%E5%91%A8/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
   
 </div>
 
@@ -450,8 +432,7 @@ options：
 
 
 
-      
-    <div class="comments" id="valine-comments"></div>
+    <div class="comments" id="waline-comments"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -474,18 +455,14 @@ options：
     });
   }
 </script>
-
-    </div>
+</div>
   </main>
 
   <footer class="footer">
     <div class="footer-inner">
-      
 
-      
 
 <div class="copyright">
-  
   &copy; 
   <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
@@ -518,10 +495,9 @@ options：
   </footer>
 
   
-  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/@next-theme/pjax@0.4.0/pjax.min.js"></script>
-<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
-  <script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script>
 var pjax = new Pjax({
   selectors: [
     'head title',
@@ -558,20 +534,8 @@ document.addEventListener('pjax:success', () => {
 
   
 
-
-
-
-  <script src="//cdn.jsdelivr.net/npm/algoliasearch@4.5.1/dist/algoliasearch-lite.umd.js"></script>
-<script src="//cdn.jsdelivr.net/npm/instantsearch.js@4.8.3/dist/instantsearch.production.min.js"></script><script src="/js/algolia-search.js"></script>
-
-
-
-
-
-
-
-
-
+<script src="//cdn.jsdelivr.net/npm/algoliasearch@4.8.2/dist/algoliasearch-lite.umd.js"></script>
+<script src="//cdn.jsdelivr.net/npm/instantsearch.js@4.8.7/dist/instantsearch.production.min.js"></script><script src="/js/algolia-search.js"></script>
 
 
 
@@ -598,34 +562,24 @@ document.addEventListener('pjax:success', () => {
     });
   </script>
 
-
   
   <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
 
 
-
-
-
-
     <div class="pjax">
-  
-
-  
 
 <script>
-NexT.utils.loadComments('#valine-comments', () => {
-  NexT.utils.getScript('//cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', () => {
-    new Valine(Object.assign({"enable":true,"appId":"xSyXpjsDJzJpO9tDIvmj3NkK-MdYXbMMI","appKey":"f1m1Dr2aM6WwHyzQTAnSVFNX","serverURLs":null,"placeholder":"Just go go","avatar":"mm","meta":["nick","mail","link"],"pageSize":10,"lang":null,"visitor":true,"comment_count":true,"recordIP":false,"enableQQ":true,"requiredFields":["nick"]}, {
-      el: '#valine-comments',
-      path: "/2020/06/01/%E7%AC%AC%E5%85%AB%E5%91%A8/",
-      serverURLs: "https://xsyxpjsd.api.lncldglobal.com"
+NexT.utils.loadComments('#waline-comments', () => {
+  NexT.utils.getScript('https://cdn.jsdelivr.net/npm/@waline/client/dist/Waline.min.js', () => {
+    new Waline(Object.assign({"enable":true,"serverURL":"https://waline-lzk.vercel.app","placeholder":"Just go go","avatar":"mm","meta":["nick","mail","link"],"pageSize":10,"lang":null,"visitor":true,"requiredFields":["nick"]}, {
+      el: '#waline-comments',
+      path: "/2020/06/01/%E7%AC%AC%E5%85%AB%E5%91%A8/"
     }));
-  }, window.Valine);
+  }, window.Waline);
 });
 </script>
-
     </div>
 </body>
 </html>

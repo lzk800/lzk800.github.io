@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
 <meta name="generator" content="Hexo 5.2.0">
+
+
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-blog.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-blog.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-blog.png">
@@ -14,17 +16,16 @@
 
 
 
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.0/css/all.min.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.1/css/all.min.css">
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.css">
   <script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js"></script>
 
 <script class="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"zkliang.com","root":"/","scheme":"Gemini","version":"8.0.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"algolia":{"appID":"GBI3X4HQ5T","apiKey":"4356c718dc242bca59a4e2fce2e71066","indexName":"Hexo","hits":{"per_page":10}}};
+    var CONFIG = {"hostname":"zkliang.com","root":"/","images":"/images","scheme":"Gemini","version":"8.1.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"algolia":{"appID":"GBI3X4HQ5T","apiKey":"4356c718dc242bca59a4e2fce2e71066","indexName":"Hexo","hits":{"per_page":10}}};
   </script>
-
-  <meta name="description" content="1、自建yum仓库，分别为网络源和本地源  * 网络源    1. 在&#x2F;etc&#x2F;yum.repos.d&#x2F;路径下建立文件aliyun.repo写入以下内容：          [base]          name&#x3D;CentOS-$releasever - Base - mirrors.aliyun.com          failovermethod&#x3D;priority          bas">
+<meta name="description" content="1、自建yum仓库，分别为网络源和本地源  * 网络源    1. 在&#x2F;etc&#x2F;yum.repos.d&#x2F;路径下建立文件aliyun.repo写入以下内容：          [base]          name&#x3D;CentOS-$releasever - Base - mirrors.aliyun.com          failovermethod&#x3D;priority          bas">
 <meta property="og:type" content="article">
 <meta property="og:title" content="第七周">
 <meta property="og:url" content="https://zkliang.com/2020/05/25/%E7%AC%AC%E4%B8%83%E5%91%A8/index.html">
@@ -53,8 +54,7 @@
     lang   : 'zh-CN'
   };
 </script>
-
-  <title>第七周 | 鲜橙多的博客</title>
+<title>第七周 | 鲜橙多的博客</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-178722830-1"></script>
     <script data-pjax>
@@ -65,9 +65,6 @@
         gtag('config', 'UA-178722830-1');
       }
     </script>
-
-
-
 
 
 
@@ -172,8 +169,7 @@
 
 
   <div class="search-pop-overlay">
-    <div class="popup search-popup">
-        <div class="search-header">
+    <div class="popup search-popup"><div class="search-header">
   <span class="search-icon">
     <i class="fa fa-search"></i>
   </span>
@@ -188,7 +184,6 @@
   <div class="algolia-pagination"></div>
 </div>
 
-      
     </div>
   </div>
 
@@ -213,14 +208,15 @@
         </li>
       </ul>
 
-      <!--noindex-->
-      <section class="post-toc-wrap sidebar-panel">
-          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1%E3%80%81%E8%87%AA%E5%BB%BA%20yum%20%E4%BB%93%E5%BA%93%EF%BC%8C%E5%88%86%E5%88%AB%E4%B8%BA%E7%BD%91%E7%BB%9C%E6%BA%90%E5%92%8C%E6%9C%AC%E5%9C%B0%E6%BA%90"><span class="nav-text">1、自建 yum 仓库，分别为网络源和本地源</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E6%BA%90"><span class="nav-text">网络源</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%20%E5%9C%A8%20-etc-yum-repos-d-%20%E8%B7%AF%E5%BE%84%E4%B8%8B%E5%BB%BA%E7%AB%8B%E6%96%87%E4%BB%B6%20aliyun-repo%20%E5%86%99%E5%85%A5%E4%BB%A5%E4%B8%8B%E5%86%85%E5%AE%B9%EF%BC%9A"><span class="nav-text">1. 在 &#x2F;etc&#x2F;yum.repos.d&#x2F; 路径下建立文件 aliyun.repo 写入以下内容：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%AC%E5%9C%B0%E6%BA%90"><span class="nav-text">本地源</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%20%E5%A4%87%E4%BB%BD%E9%BB%98%E8%AE%A4%20yum%20%E6%BA%90%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="nav-text">1. 备份默认 yum 源配置文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%20%E6%8C%82%E8%BD%BD%E5%85%89%E7%9B%98"><span class="nav-text">2. 挂载光盘</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%20%E9%85%8D%E7%BD%AE%E5%85%89%E7%9B%98%E4%BD%9C%E4%B8%BA%E6%9C%AC%E5%9C%B0%20yum%20%E6%BA%90"><span class="nav-text">3. 配置光盘作为本地 yum 源</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2%E3%80%81%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85%20http2-4%EF%BC%8C%E5%AE%9E%E7%8E%B0%E5%8F%AF%E4%BB%A5%E6%AD%A3%E5%B8%B8%E8%AE%BF%E9%97%AE%EF%BC%8C%E5%B9%B6%E5%B0%86%E7%BC%96%E8%AF%91%E6%AD%A5%E9%AA%A4%E5%92%8C%E7%BB%93%E6%9E%9C%E6%8F%90%E4%BA%A4%E3%80%82"><span class="nav-text">2、编译安装 http2.4，实现可以正常访问，并将编译步骤和结果提交。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3%E3%80%81%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%202G%20%E7%9A%84%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%EF%BC%8C%E5%9D%97%E5%A4%A7%E5%B0%8F%E4%B8%BA%202048byte%EF%BC%8C%E9%A2%84%E7%95%99%201-%20%E5%8F%AF%E7%94%A8%E7%A9%BA%E9%97%B4%20-%20%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%20-ext4%EF%BC%8C%E5%8D%B7%E6%A0%87%E4%B8%BA%20TEST%EF%BC%8C%E8%A6%81%E6%B1%82%E6%AD%A4%E5%88%86%E5%8C%BA%E5%BC%80%E6%9C%BA%E5%90%8E%E8%87%AA%E5%8A%A8%E6%8C%82%E8%BD%BD%E8%87%B3%20-test%20%E7%9B%AE%E5%BD%95%EF%BC%8C%E4%B8%94%E9%BB%98%E8%AE%A4%E6%9C%89%20acl%20%E6%8C%82%E8%BD%BD%E9%80%89%E9%A1%B9"><span class="nav-text">3、创建一个 2G 的文件系统，块大小为 2048byte，预留 1% 可用空间, 文件系统 ext4，卷标为 TEST，要求此分区开机后自动挂载至 &#x2F;test 目录，且默认有 acl 挂载选项</span></a></li></ol></div>
-      </section>
-      <!--/noindex-->
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <section class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1%E3%80%81%E8%87%AA%E5%BB%BA%20yum%20%E4%BB%93%E5%BA%93%EF%BC%8C%E5%88%86%E5%88%AB%E4%B8%BA%E7%BD%91%E7%BB%9C%E6%BA%90%E5%92%8C%E6%9C%AC%E5%9C%B0%E6%BA%90"><span class="nav-text">1、自建 yum 仓库，分别为网络源和本地源</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E6%BA%90"><span class="nav-text">网络源</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%20%E5%9C%A8%20-etc-yum-repos-d-%20%E8%B7%AF%E5%BE%84%E4%B8%8B%E5%BB%BA%E7%AB%8B%E6%96%87%E4%BB%B6%20aliyun-repo%20%E5%86%99%E5%85%A5%E4%BB%A5%E4%B8%8B%E5%86%85%E5%AE%B9%EF%BC%9A"><span class="nav-text">1. 在 &#x2F;etc&#x2F;yum.repos.d&#x2F; 路径下建立文件 aliyun.repo 写入以下内容：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%AC%E5%9C%B0%E6%BA%90"><span class="nav-text">本地源</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%20%E5%A4%87%E4%BB%BD%E9%BB%98%E8%AE%A4%20yum%20%E6%BA%90%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="nav-text">1. 备份默认 yum 源配置文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%20%E6%8C%82%E8%BD%BD%E5%85%89%E7%9B%98"><span class="nav-text">2. 挂载光盘</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%20%E9%85%8D%E7%BD%AE%E5%85%89%E7%9B%98%E4%BD%9C%E4%B8%BA%E6%9C%AC%E5%9C%B0%20yum%20%E6%BA%90"><span class="nav-text">3. 配置光盘作为本地 yum 源</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2%E3%80%81%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85%20http2-4%EF%BC%8C%E5%AE%9E%E7%8E%B0%E5%8F%AF%E4%BB%A5%E6%AD%A3%E5%B8%B8%E8%AE%BF%E9%97%AE%EF%BC%8C%E5%B9%B6%E5%B0%86%E7%BC%96%E8%AF%91%E6%AD%A5%E9%AA%A4%E5%92%8C%E7%BB%93%E6%9E%9C%E6%8F%90%E4%BA%A4%E3%80%82"><span class="nav-text">2、编译安装 http2.4，实现可以正常访问，并将编译步骤和结果提交。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3%E3%80%81%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%202G%20%E7%9A%84%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%EF%BC%8C%E5%9D%97%E5%A4%A7%E5%B0%8F%E4%B8%BA%202048byte%EF%BC%8C%E9%A2%84%E7%95%99%201-%20%E5%8F%AF%E7%94%A8%E7%A9%BA%E9%97%B4%20-%20%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%20-ext4%EF%BC%8C%E5%8D%B7%E6%A0%87%E4%B8%BA%20TEST%EF%BC%8C%E8%A6%81%E6%B1%82%E6%AD%A4%E5%88%86%E5%8C%BA%E5%BC%80%E6%9C%BA%E5%90%8E%E8%87%AA%E5%8A%A8%E6%8C%82%E8%BD%BD%E8%87%B3%20-test%20%E7%9B%AE%E5%BD%95%EF%BC%8C%E4%B8%94%E9%BB%98%E8%AE%A4%E6%9C%89%20acl%20%E6%8C%82%E8%BD%BD%E9%80%89%E9%A1%B9"><span class="nav-text">3、创建一个 2G 的文件系统，块大小为 2048byte，预留 1% 可用空间, 文件系统 ext4，卷标为 TEST，要求此分区开机后自动挂载至 &#x2F;test 目录，且默认有 acl 挂载选项</span></a></li></ol></div>
+        </section>
+        <!--/noindex-->
 
-      <section class="site-overview-wrap sidebar-panel">
-        <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <section class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <img class="site-author-image" itemprop="image" alt="zkliang"
       src="https://avatars0.githubusercontent.com/u/2090024?s=400&v=4">
   <p class="site-author-name" itemprop="name">zkliang</p>
@@ -260,7 +256,8 @@
 
 
 
-      </section>
+        </section>
+      </div>
     </div>
   </aside>
   <div class="sidebar-dimmer"></div>
@@ -280,9 +277,7 @@
 
 
     <div class="main-inner post posts-expand">
-      
 
-      
 
   
 
@@ -343,19 +338,6 @@
       <span class="post-meta-item-text">阅读次数：</span>
       <span class="leancloud-visitors-count"></span>
     </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2020/05/25/%E7%AC%AC%E4%B8%83%E5%91%A8/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2020/05/25/%E7%AC%AC%E4%B8%83%E5%91%A8/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
   
 </div>
 
@@ -459,8 +441,7 @@
 
 
 
-      
-    <div class="comments" id="valine-comments"></div>
+    <div class="comments" id="waline-comments"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -483,18 +464,14 @@
     });
   }
 </script>
-
-    </div>
+</div>
   </main>
 
   <footer class="footer">
     <div class="footer-inner">
-      
 
-      
 
 <div class="copyright">
-  
   &copy; 
   <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
@@ -527,10 +504,9 @@
   </footer>
 
   
-  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/@next-theme/pjax@0.4.0/pjax.min.js"></script>
-<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
-  <script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script>
 var pjax = new Pjax({
   selectors: [
     'head title',
@@ -567,20 +543,8 @@ document.addEventListener('pjax:success', () => {
 
   
 
-
-
-
-  <script src="//cdn.jsdelivr.net/npm/algoliasearch@4.5.1/dist/algoliasearch-lite.umd.js"></script>
-<script src="//cdn.jsdelivr.net/npm/instantsearch.js@4.8.3/dist/instantsearch.production.min.js"></script><script src="/js/algolia-search.js"></script>
-
-
-
-
-
-
-
-
-
+<script src="//cdn.jsdelivr.net/npm/algoliasearch@4.8.2/dist/algoliasearch-lite.umd.js"></script>
+<script src="//cdn.jsdelivr.net/npm/instantsearch.js@4.8.7/dist/instantsearch.production.min.js"></script><script src="/js/algolia-search.js"></script>
 
 
 
@@ -607,34 +571,24 @@ document.addEventListener('pjax:success', () => {
     });
   </script>
 
-
   
   <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
 
 
-
-
-
-
     <div class="pjax">
-  
-
-  
 
 <script>
-NexT.utils.loadComments('#valine-comments', () => {
-  NexT.utils.getScript('//cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', () => {
-    new Valine(Object.assign({"enable":true,"appId":"xSyXpjsDJzJpO9tDIvmj3NkK-MdYXbMMI","appKey":"f1m1Dr2aM6WwHyzQTAnSVFNX","serverURLs":null,"placeholder":"Just go go","avatar":"mm","meta":["nick","mail","link"],"pageSize":10,"lang":null,"visitor":true,"comment_count":true,"recordIP":false,"enableQQ":true,"requiredFields":["nick"]}, {
-      el: '#valine-comments',
-      path: "/2020/05/25/%E7%AC%AC%E4%B8%83%E5%91%A8/",
-      serverURLs: "https://xsyxpjsd.api.lncldglobal.com"
+NexT.utils.loadComments('#waline-comments', () => {
+  NexT.utils.getScript('https://cdn.jsdelivr.net/npm/@waline/client/dist/Waline.min.js', () => {
+    new Waline(Object.assign({"enable":true,"serverURL":"https://waline-lzk.vercel.app","placeholder":"Just go go","avatar":"mm","meta":["nick","mail","link"],"pageSize":10,"lang":null,"visitor":true,"requiredFields":["nick"]}, {
+      el: '#waline-comments',
+      path: "/2020/05/25/%E7%AC%AC%E4%B8%83%E5%91%A8/"
     }));
-  }, window.Valine);
+  }, window.Waline);
 });
 </script>
-
     </div>
 </body>
 </html>

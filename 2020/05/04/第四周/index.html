@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
 <meta name="generator" content="Hexo 5.2.0">
+
+
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-blog.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-blog.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-blog.png">
@@ -14,17 +16,16 @@
 
 
 
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.0/css/all.min.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.1/css/all.min.css">
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.css">
   <script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js"></script>
 
 <script class="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"zkliang.com","root":"/","scheme":"Gemini","version":"8.0.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"algolia":{"appID":"GBI3X4HQ5T","apiKey":"4356c718dc242bca59a4e2fce2e71066","indexName":"Hexo","hits":{"per_page":10}}};
+    var CONFIG = {"hostname":"zkliang.com","root":"/","images":"/images","scheme":"Gemini","version":"8.1.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"algolia":{"appID":"GBI3X4HQ5T","apiKey":"4356c718dc242bca59a4e2fce2e71066","indexName":"Hexo","hits":{"per_page":10}}};
   </script>
-
-  <meta name="description" content="1、统计出&#x2F;etc&#x2F;passwd文件中其默认shell为非&#x2F;sbin&#x2F;nologin的用户个数，并将用户都显示出来  * 统计shell为非&#x2F;sbin&#x2F;nologin用户的个数：         ~]# cat &#x2F;etc&#x2F;passwd | grep -v &#39;&#x2F;sbin&#x2F;nologin&#39;|wc -l          * 显示用户：         ~]# cat &#x2F;etc&#x2F;passwd | gre">
+<meta name="description" content="1、统计出&#x2F;etc&#x2F;passwd文件中其默认shell为非&#x2F;sbin&#x2F;nologin的用户个数，并将用户都显示出来  * 统计shell为非&#x2F;sbin&#x2F;nologin用户的个数：         ~]# cat &#x2F;etc&#x2F;passwd | grep -v &#39;&#x2F;sbin&#x2F;nologin&#39;|wc -l          * 显示用户：         ~]# cat &#x2F;etc&#x2F;passwd | gre">
 <meta property="og:type" content="article">
 <meta property="og:title" content="第四周">
 <meta property="og:url" content="https://zkliang.com/2020/05/04/%E7%AC%AC%E5%9B%9B%E5%91%A8/index.html">
@@ -49,8 +50,7 @@
     lang   : 'zh-CN'
   };
 </script>
-
-  <title>第四周 | 鲜橙多的博客</title>
+<title>第四周 | 鲜橙多的博客</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-178722830-1"></script>
     <script data-pjax>
@@ -61,9 +61,6 @@
         gtag('config', 'UA-178722830-1');
       }
     </script>
-
-
-
 
 
 
@@ -168,8 +165,7 @@
 
 
   <div class="search-pop-overlay">
-    <div class="popup search-popup">
-        <div class="search-header">
+    <div class="popup search-popup"><div class="search-header">
   <span class="search-icon">
     <i class="fa fa-search"></i>
   </span>
@@ -184,7 +180,6 @@
   <div class="algolia-pagination"></div>
 </div>
 
-      
     </div>
   </div>
 
@@ -209,14 +204,15 @@
         </li>
       </ul>
 
-      <!--noindex-->
-      <section class="post-toc-wrap sidebar-panel">
-          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1%E3%80%81%E7%BB%9F%E8%AE%A1%E5%87%BA%20-etc-passwd%20%E6%96%87%E4%BB%B6%E4%B8%AD%E5%85%B6%E9%BB%98%E8%AE%A4%20shell%20%E4%B8%BA%E9%9D%9E%20-sbin-nologin%20%E7%9A%84%E7%94%A8%E6%88%B7%E4%B8%AA%E6%95%B0%EF%BC%8C%E5%B9%B6%E5%B0%86%E7%94%A8%E6%88%B7%E9%83%BD%E6%98%BE%E7%A4%BA%E5%87%BA%E6%9D%A5"><span class="nav-text">1、统计出 &#x2F;etc&#x2F;passwd 文件中其默认 shell 为非 &#x2F;sbin&#x2F;nologin 的用户个数，并将用户都显示出来 </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2%E3%80%81%E6%9F%A5%E5%87%BA%E7%94%A8%E6%88%B7%20UID%20%E6%9C%80%E5%A4%A7%E5%80%BC%E7%9A%84%E7%94%A8%E6%88%B7%E5%90%8D%E3%80%81UID%20%E5%8F%8A%20shell%20%E7%B1%BB%E5%9E%8B"><span class="nav-text">2、查出用户 UID 最大值的用户名、UID 及 shell 类型 </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3%E3%80%81%E7%BB%9F%E8%AE%A1%E5%BD%93%E5%89%8D%E8%BF%9E%E6%8E%A5%E6%9C%AC%E6%9C%BA%E7%9A%84%E6%AF%8F%E4%B8%AA%E8%BF%9C%E7%A8%8B%E4%B8%BB%E6%9C%BA%20IP%20%E7%9A%84%E8%BF%9E%E6%8E%A5%E6%95%B0%EF%BC%8C%E5%B9%B6%E6%8C%89%E4%BB%8E%E5%A4%A7%E5%88%B0%E5%B0%8F%E6%8E%92%E5%BA%8F"><span class="nav-text">3、统计当前连接本机的每个远程主机 IP 的连接数，并按从大到小排序 </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4%E3%80%81%E7%BC%96%E5%86%99%E8%84%9A%E6%9C%AC%20-createuser-sh%EF%BC%8C%E5%AE%9E%E7%8E%B0%E5%A6%82%E4%B8%8B%E5%8A%9F%E8%83%BD%20-%20%E4%BD%BF%E7%94%A8%E4%B8%80%E4%B8%AA%E7%94%A8%E6%88%B7%E5%90%8D%E5%81%9A%E4%B8%BA%E5%8F%82%E6%95%B0%EF%BC%8C%E5%A6%82%E6%9E%9C%20-%20%E6%8C%87%E5%AE%9A%E5%8F%82%E6%95%B0%E7%9A%84%E7%94%A8%E6%88%B7%E5%AD%98%E5%9C%A8%EF%BC%8C%E5%B0%B1%E6%98%BE%E7%A4%BA%E5%85%B6%E5%AD%98%E5%9C%A8%EF%BC%8C%E5%90%A6%E5%88%99%E6%B7%BB%E5%8A%A0%E4%B9%8B%20-%20%E6%98%BE%E7%A4%BA%E6%B7%BB%E5%8A%A0%E7%9A%84%E7%94%A8%E6%88%B7%E7%9A%84%20id%20%E5%8F%B7%E7%AD%89%20-%20%E4%BF%A1%E6%81%AF"><span class="nav-text">4、编写脚本 createuser.sh，实现如下功能: 使用一个用户名做为参数，如果 指定参数的用户存在，就显示其存在，否则添加之; 显示添加的用户的 id 号等 信息 </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5%E3%80%81%E7%BC%96%E5%86%99%E7%94%9F%E6%88%90%E8%84%9A%E6%9C%AC%E5%9F%BA%E6%9C%AC%E6%A0%BC%E5%BC%8F%E7%9A%84%E8%84%9A%E6%9C%AC%EF%BC%8C%E5%8C%85%E6%8B%AC%E4%BD%9C%E8%80%85%EF%BC%8C%E8%81%94%E7%B3%BB%E6%96%B9%E5%BC%8F%EF%BC%8C%E7%89%88%E6%9C%AC%EF%BC%8C%E6%97%B6%E9%97%B4%EF%BC%8C%E6%8F%8F%E8%BF%B0%E7%AD%89"><span class="nav-text">5、编写生成脚本基本格式的脚本，包括作者，联系方式，版本，时间，描述等 </span></a></li></ol></div>
-      </section>
-      <!--/noindex-->
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <section class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1%E3%80%81%E7%BB%9F%E8%AE%A1%E5%87%BA%20-etc-passwd%20%E6%96%87%E4%BB%B6%E4%B8%AD%E5%85%B6%E9%BB%98%E8%AE%A4%20shell%20%E4%B8%BA%E9%9D%9E%20-sbin-nologin%20%E7%9A%84%E7%94%A8%E6%88%B7%E4%B8%AA%E6%95%B0%EF%BC%8C%E5%B9%B6%E5%B0%86%E7%94%A8%E6%88%B7%E9%83%BD%E6%98%BE%E7%A4%BA%E5%87%BA%E6%9D%A5"><span class="nav-text">1、统计出 &#x2F;etc&#x2F;passwd 文件中其默认 shell 为非 &#x2F;sbin&#x2F;nologin 的用户个数，并将用户都显示出来 </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2%E3%80%81%E6%9F%A5%E5%87%BA%E7%94%A8%E6%88%B7%20UID%20%E6%9C%80%E5%A4%A7%E5%80%BC%E7%9A%84%E7%94%A8%E6%88%B7%E5%90%8D%E3%80%81UID%20%E5%8F%8A%20shell%20%E7%B1%BB%E5%9E%8B"><span class="nav-text">2、查出用户 UID 最大值的用户名、UID 及 shell 类型 </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3%E3%80%81%E7%BB%9F%E8%AE%A1%E5%BD%93%E5%89%8D%E8%BF%9E%E6%8E%A5%E6%9C%AC%E6%9C%BA%E7%9A%84%E6%AF%8F%E4%B8%AA%E8%BF%9C%E7%A8%8B%E4%B8%BB%E6%9C%BA%20IP%20%E7%9A%84%E8%BF%9E%E6%8E%A5%E6%95%B0%EF%BC%8C%E5%B9%B6%E6%8C%89%E4%BB%8E%E5%A4%A7%E5%88%B0%E5%B0%8F%E6%8E%92%E5%BA%8F"><span class="nav-text">3、统计当前连接本机的每个远程主机 IP 的连接数，并按从大到小排序 </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4%E3%80%81%E7%BC%96%E5%86%99%E8%84%9A%E6%9C%AC%20-createuser-sh%EF%BC%8C%E5%AE%9E%E7%8E%B0%E5%A6%82%E4%B8%8B%E5%8A%9F%E8%83%BD%20-%20%E4%BD%BF%E7%94%A8%E4%B8%80%E4%B8%AA%E7%94%A8%E6%88%B7%E5%90%8D%E5%81%9A%E4%B8%BA%E5%8F%82%E6%95%B0%EF%BC%8C%E5%A6%82%E6%9E%9C%20-%20%E6%8C%87%E5%AE%9A%E5%8F%82%E6%95%B0%E7%9A%84%E7%94%A8%E6%88%B7%E5%AD%98%E5%9C%A8%EF%BC%8C%E5%B0%B1%E6%98%BE%E7%A4%BA%E5%85%B6%E5%AD%98%E5%9C%A8%EF%BC%8C%E5%90%A6%E5%88%99%E6%B7%BB%E5%8A%A0%E4%B9%8B%20-%20%E6%98%BE%E7%A4%BA%E6%B7%BB%E5%8A%A0%E7%9A%84%E7%94%A8%E6%88%B7%E7%9A%84%20id%20%E5%8F%B7%E7%AD%89%20-%20%E4%BF%A1%E6%81%AF"><span class="nav-text">4、编写脚本 createuser.sh，实现如下功能: 使用一个用户名做为参数，如果 指定参数的用户存在，就显示其存在，否则添加之; 显示添加的用户的 id 号等 信息 </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5%E3%80%81%E7%BC%96%E5%86%99%E7%94%9F%E6%88%90%E8%84%9A%E6%9C%AC%E5%9F%BA%E6%9C%AC%E6%A0%BC%E5%BC%8F%E7%9A%84%E8%84%9A%E6%9C%AC%EF%BC%8C%E5%8C%85%E6%8B%AC%E4%BD%9C%E8%80%85%EF%BC%8C%E8%81%94%E7%B3%BB%E6%96%B9%E5%BC%8F%EF%BC%8C%E7%89%88%E6%9C%AC%EF%BC%8C%E6%97%B6%E9%97%B4%EF%BC%8C%E6%8F%8F%E8%BF%B0%E7%AD%89"><span class="nav-text">5、编写生成脚本基本格式的脚本，包括作者，联系方式，版本，时间，描述等 </span></a></li></ol></div>
+        </section>
+        <!--/noindex-->
 
-      <section class="site-overview-wrap sidebar-panel">
-        <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <section class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <img class="site-author-image" itemprop="image" alt="zkliang"
       src="https://avatars0.githubusercontent.com/u/2090024?s=400&v=4">
   <p class="site-author-name" itemprop="name">zkliang</p>
@@ -256,7 +252,8 @@
 
 
 
-      </section>
+        </section>
+      </div>
     </div>
   </aside>
   <div class="sidebar-dimmer"></div>
@@ -276,9 +273,7 @@
 
 
     <div class="main-inner post posts-expand">
-      
 
-      
 
   
 
@@ -340,19 +335,6 @@
       <span class="leancloud-visitors-count"></span>
     </span>
   
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2020/05/04/%E7%AC%AC%E5%9B%9B%E5%91%A8/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2020/05/04/%E7%AC%AC%E5%9B%9B%E5%91%A8/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
 </div>
 
         </div>
@@ -406,8 +388,7 @@
 
 
 
-      
-    <div class="comments" id="valine-comments"></div>
+    <div class="comments" id="waline-comments"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -430,18 +411,14 @@
     });
   }
 </script>
-
-    </div>
+</div>
   </main>
 
   <footer class="footer">
     <div class="footer-inner">
-      
 
-      
 
 <div class="copyright">
-  
   &copy; 
   <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
@@ -474,10 +451,9 @@
   </footer>
 
   
-  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/@next-theme/pjax@0.4.0/pjax.min.js"></script>
-<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
-  <script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script>
 var pjax = new Pjax({
   selectors: [
     'head title',
@@ -514,20 +490,8 @@ document.addEventListener('pjax:success', () => {
 
   
 
-
-
-
-  <script src="//cdn.jsdelivr.net/npm/algoliasearch@4.5.1/dist/algoliasearch-lite.umd.js"></script>
-<script src="//cdn.jsdelivr.net/npm/instantsearch.js@4.8.3/dist/instantsearch.production.min.js"></script><script src="/js/algolia-search.js"></script>
-
-
-
-
-
-
-
-
-
+<script src="//cdn.jsdelivr.net/npm/algoliasearch@4.8.2/dist/algoliasearch-lite.umd.js"></script>
+<script src="//cdn.jsdelivr.net/npm/instantsearch.js@4.8.7/dist/instantsearch.production.min.js"></script><script src="/js/algolia-search.js"></script>
 
 
 
@@ -554,34 +518,24 @@ document.addEventListener('pjax:success', () => {
     });
   </script>
 
-
   
   <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
 
 
-
-
-
-
     <div class="pjax">
-  
-
-  
 
 <script>
-NexT.utils.loadComments('#valine-comments', () => {
-  NexT.utils.getScript('//cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', () => {
-    new Valine(Object.assign({"enable":true,"appId":"xSyXpjsDJzJpO9tDIvmj3NkK-MdYXbMMI","appKey":"f1m1Dr2aM6WwHyzQTAnSVFNX","serverURLs":null,"placeholder":"Just go go","avatar":"mm","meta":["nick","mail","link"],"pageSize":10,"lang":null,"visitor":true,"comment_count":true,"recordIP":false,"enableQQ":true,"requiredFields":["nick"]}, {
-      el: '#valine-comments',
-      path: "/2020/05/04/%E7%AC%AC%E5%9B%9B%E5%91%A8/",
-      serverURLs: "https://xsyxpjsd.api.lncldglobal.com"
+NexT.utils.loadComments('#waline-comments', () => {
+  NexT.utils.getScript('https://cdn.jsdelivr.net/npm/@waline/client/dist/Waline.min.js', () => {
+    new Waline(Object.assign({"enable":true,"serverURL":"https://waline-lzk.vercel.app","placeholder":"Just go go","avatar":"mm","meta":["nick","mail","link"],"pageSize":10,"lang":null,"visitor":true,"requiredFields":["nick"]}, {
+      el: '#waline-comments',
+      path: "/2020/05/04/%E7%AC%AC%E5%9B%9B%E5%91%A8/"
     }));
-  }, window.Valine);
+  }, window.Waline);
 });
 </script>
-
     </div>
 </body>
 </html>
